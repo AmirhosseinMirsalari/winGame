@@ -1,17 +1,23 @@
-@font-face {
-  font-family: "Vazir";
-  src: url(../public/fonts/Vazir.eot);
-  /* IE9 Compat Modes */
-  src: url(../public/fonts/Vazir.eot) format("embedded-opentype"),
-    url(../public/fonts/Vazir.woff2) format("woff2"),
-    url(../public/fonts/Vazir.woff) format("woff"),
-    url(../public/fonts/Vazir.ttf) format("truetype");
-  /* Safari, Android, iOS */
+@import url(../public/fonts/css/fontiran.css);
+
+html{
+  font-family: "iranyekan" !important;
 }
 
 body {
-  font-family: "Vazir", Arial, Helvetica, sans-serif !important;
+  font-family: "iranyekan" !important;
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  background-image: url("../public/icons/right-arrow.svg");
+}
+.slide1 {
+  background-image: url("../public/slide1.jpg");
+}
+.slide2 {
+  background-image: url("../public/slide2.jpg");
 }
