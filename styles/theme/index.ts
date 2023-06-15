@@ -38,7 +38,7 @@ const lightThemeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: ["jost", "sans-serif"].join(","),
+    fontFamily: ["iranyekan", "iranyekan"].join(","),
     h1: {
       fontSize: 68,
     },
