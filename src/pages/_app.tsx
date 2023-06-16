@@ -6,6 +6,7 @@ import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import createEmotionCache from "../../styles/theme/createEmotionCache";
 import lightThemeOptions from "../../styles/theme";
 import "../../styles/globals.css";
+import Footer from "../layouts/MainLayout/Footer/Footer";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -23,6 +24,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   );
