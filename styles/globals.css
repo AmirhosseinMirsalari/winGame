@@ -10,6 +10,9 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
+a{
+  text-decoration: none;
+}
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
