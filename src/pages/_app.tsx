@@ -7,6 +7,9 @@ import createEmotionCache from "../../styles/theme/createEmotionCache";
 import lightThemeOptions from "../../styles/theme";
 import "../../styles/globals.css";
 import Footer from "../layouts/MainLayout/Footer/Footer";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "../redux/store";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -23,8 +26,12 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
-        <Footer />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Component {...pageProps} />
+            <Footer />
+          </PersistGate>
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );
