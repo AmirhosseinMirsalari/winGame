@@ -3,7 +3,7 @@ import reducers from "./_rootReducer";
 import { api } from "./api";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from "./storage-persist"
 
 const persistConfig = {
   key: "root",
