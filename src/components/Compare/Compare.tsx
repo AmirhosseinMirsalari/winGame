@@ -5,12 +5,16 @@ import { useAppSelector } from "../../redux/store";
 import { CompareWrapper, CTButton } from "./styles";
 import ItemsTable from "./ItemsTable/ItemsTable";
 import { useRouter } from "next/router";
+import { IProduct } from "types/product";
 
 interface Props {
   setOpenCompareModal: Dispatch<SetStateAction<boolean>>;
+  id: string;
+  product: IProduct;
+  setOpenCart: SetStateAction<boolean>;
 }
 
-function Compare({ setOpenCompareModal }: Props) {
+function Compare({ setOpenCompareModal, id, product, setOpenCart }: Props) {
   const { compareList, category } = useAppSelector(
     (state) => state.reducer.compare
   );
@@ -48,12 +52,17 @@ function Compare({ setOpenCompareModal }: Props) {
               هیچ محصولی برای مقایسه اضافه نشده است
             </Typography>
             <CTButton variant="contained" onClick={clickHandler}>
-              add product
+              افزودن محصول
             </CTButton>
           </Box>
         ) : (
           <Box sx={{ display: "flex" }}>
-            <ItemsTable products={compareList} />
+            <ItemsTable
+              id={id}
+              setOpenCart={setOpenCart}
+              product={product}
+              products={compareList}
+            />
             {compareList.length === 1 && (
               <Box
                 sx={{
