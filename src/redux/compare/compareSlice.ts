@@ -20,13 +20,14 @@ const compareSlice = createSlice({
 
       if (state.compareList.length === 0) {
         state.compareList.push(product);
-        console.log(product?.category);
-
         state.category = product?.category;
       } else if (
         product?.category === state.category &&
         product?._id !== state.compareList[0]._id &&
-        state.compareList.length < 2
+        product?._id !== state.compareList[1]?._id &&
+        product?._id !== state.compareList[2]?._id &&
+
+        state.compareList.length < 4
       ) {
         state.compareList.push(product);
       }
