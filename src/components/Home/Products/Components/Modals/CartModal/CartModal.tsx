@@ -42,6 +42,7 @@ const CartModal = ({ cartItems, setOpenCart }: T) => {
           sx={{
             padding: "0.8rem 2.2rem",
             background: "#f03637",
+            borderRadius:"10px",
             "&:hover": { background: "#333" },
           }}
           onClick={() => setOpenCart(false)}
@@ -49,7 +50,7 @@ const CartModal = ({ cartItems, setOpenCart }: T) => {
           ادامه خرید
         </Button>
         <Link href="/cart">
-          <Button variant="contained" sx={{ padding: "0.8rem 2.2rem" }}>
+          <Button variant="contained" sx={{ padding: "0.8rem 1.2rem",borderRadius:"10px" }}>
              رفتن به سبد خرید  
           </Button>
         </Link>
