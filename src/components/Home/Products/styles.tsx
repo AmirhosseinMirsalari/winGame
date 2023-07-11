@@ -101,20 +101,24 @@ export const StyledModal = styled("div")(({ theme }) => ({
     },
     "& .box": {
       width: "100%",
-      height: "1100px",
+      height: "40%",
       objectFit: "cover",
     },
     "& .rightBox": {
       width: "84%",
+      marginRight:"20px"
+
     },
   },
 }));
 
 export const modalStyle = {
+  height: { xs: "80%", sm: "450px", md: "75%", lg: "90%", xl: "90%" },
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  borderRadius:"10px",
   minHeight: "80%",
   width: { xs: "85%", sm: "450px", md: "75%", lg: "75%", xl: "1200px" },
   display: "flex",
@@ -136,7 +140,7 @@ export const modalLeft = {
   alignItems: "center ",
   "& .img-box": {
     width: "100%",
-    height: { xs: "100%", md: "65%" },
+    height: { xs: "220px", md: "75%" },
     aspectRatio: "1",
     objectFit: "contain",
   },
@@ -196,6 +200,7 @@ export const closeStyle = {
   backgroundColor: "#f03637",
   transition: "all 0.2s",
   color: "#fff",
+  zIndex:"10",
   "&:hover": {
     backgroundColor: "#333",
   },
