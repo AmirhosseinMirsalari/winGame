@@ -31,6 +31,9 @@ export const CompareWrapper = styled(Box)(({ theme }) => ({
     padding: "8px 0",
     backgroundColor: theme.palette.common.digitaRed,
     position: "relative",
+    [theme.breakpoints.down("xs")]: {
+      width: "105%",
+    },
     textAlign: "center",
     color: "white",
     h2: {
@@ -78,6 +81,7 @@ export const CTCell = styled(TableCell)(({ theme }) => ({
 }));
 export const CTButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.common.digitaRed,
+  textWrap: "nowrap",
   textAlign: "center",
   color: "white",
   [theme.breakpoints.down("sm")]: {
