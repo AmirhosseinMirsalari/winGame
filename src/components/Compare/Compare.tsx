@@ -31,7 +31,7 @@ function Compare({ setOpenCompareModal, id, product, setOpenCart }: Props) {
 
   return (
     <CompareWrapper>
-      <Box sx={{ height: "90%", overflow: "auto", backgroundColor: "white" }}>
+      <Box sx={{ height: "auto", overflow: "auto", backgroundColor: "white" }}>
         <Box
           className="close-button"
           onClick={() => setOpenCompareModal(false)}
