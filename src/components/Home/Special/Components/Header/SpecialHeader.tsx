@@ -1,0 +1,41 @@
+import { Dispatch, SetStateAction } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { navStyle, StyledProducts } from "../../../Products/styles";
+
+const sortList = ["latest", "rating"];
+interface Props {
+  selectedSorting: string;
+  setSelectedSorting: Dispatch<SetStateAction<string>>;
+}
+const SpecialHeader = ({ selectedSorting, setSelectedSorting }: Props) => {
+  return (
+    <Box>
+      <StyledProducts>
+        <Typography
+          component="h2"
+          sx={{ fontWeight: "bold", fontSize: "30px", color: "#333" }}
+        >
+          پیشنهادات ویژه
+        </Typography>
+        <Box sx={navStyle}>
+          {sortList.map((sort, index) => (
+            <Button
+              key={index}
+              variant="text"
+              sx={{
+                color: selectedSorting === sort ? "common.digitaRed" : "gray",
+                backgroundColor: selectedSorting === sort ? "#FDEBEB" : "",
+                fontSize: { xs: "0.70rem", sm: "0.85rem" },
+                textTransform: "uppercase",
+              }}
+              onClick={() => setSelectedSorting(sort)}
+            >
+              {sort === "latest" ? "آخرین محصولات" : "بیشترین امتیازات"}
+            </Button>
+          ))}
+        </Box>
+      </StyledProducts>
+    </Box>
+  );
+};
+export default SpecialHeader;
