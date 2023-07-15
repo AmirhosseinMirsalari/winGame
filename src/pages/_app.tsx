@@ -10,6 +10,10 @@ import Footer from "../layouts/MainLayout/Footer/Footer";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "../redux/store";
+import Navbar from "layouts/MainLayout/Navbar/Navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Head from "next/head";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -21,6 +25,7 @@ const theme = createTheme(lightThemeOptions);
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  
 
   return (
     <CacheProvider value={emotionCache}>
@@ -28,7 +33,16 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
         <CssBaseline />
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
+            <Head>
+              <title></title>
+              <link
+                rel="icon"
+                href="https://s8.uupload.ir/files/fav_seaf.png"
+              />
+            </Head>
+            <Navbar />
             <Component {...pageProps} />
+            <ToastContainer />
             <Footer />
           </PersistGate>
         </Provider>
