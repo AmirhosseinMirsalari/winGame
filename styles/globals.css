@@ -24,3 +24,12 @@ a{
 .slide2 {
   background-image: url("../public/slide2.jpg");
 }
+.Toastify__toast-body {
+  font-family: "iranyekan" !important;
+  direction: rtl;
+}
+@media (max-width: 600px) {
+  .Toastify__toast-container {
+    margin-right: -15px;
+  }
+}
