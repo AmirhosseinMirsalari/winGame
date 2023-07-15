@@ -33,7 +33,7 @@ const ProductCard = ({ title, name, image, id }: Props) => {
           >
             {title}
           </Typography>
-          <Typography variant="h4" component="h4" color="white" fontWeight="bold" sx={{ width: "340px" }}>
+          <Typography variant="h5" component="h5" color="white" fontWeight="bold" sx={{ width: "340px" }}>
             {name}
           </Typography>
           <ButtonCard />
