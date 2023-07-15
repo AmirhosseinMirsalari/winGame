@@ -1,27 +1,27 @@
 export const navbarItems = [
   {
     id: 1,
-    name: "home",
+    name: "صفحه اصلی",
     route: "/",
   },
   {
     id: 2,
-    name: "shop",
+    name: "فروشگاه",
     route: "/shop",
   },
   {
     id: 3,
-    name: "blog",
+    name: "بلاگ",
     route: "/blog",
   },
   {
     id: 4,
-    name: "contact us",
+    name: "تماس با ما",
     route: "/contact-us",
   },
   {
     id: 5,
-    name: "about us",
+    name: "درباره ی ما",
     route: "/about-us",
   },
 ];
