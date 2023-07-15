@@ -2,6 +2,8 @@ import Head from "next/head";
 import Header from "components/Home/Header/Header";
 import Products from "components/Home/Products/Products";
 import ShopByCategories from "components/Home/ShopByCategories/ShopByCategories";
+import Special from "components/Home/Special/Special";
+
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       <Header />
       <Products />
       <ShopByCategories />
+      <Special />
+
     </>
   );
 };
