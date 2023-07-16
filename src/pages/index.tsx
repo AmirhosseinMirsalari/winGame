@@ -4,6 +4,7 @@ import Products from "components/Home/Products/Products";
 import ShopByCategories from "components/Home/ShopByCategories/ShopByCategories";
 import Special from "components/Home/Special/Special";
 import OurBlog from "components/Home/OurBlog/OurBlog";
+import WhatClientSay from "components/Home/WhatClientSay/WhatClientSay";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <Products />
       <ShopByCategories />
       <Special />
+      <WhatClientSay />
       <OurBlog />
     </>
   );
