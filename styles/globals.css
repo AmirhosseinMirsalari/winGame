@@ -1,6 +1,6 @@
 @import url(../public/fonts/css/fontiran.css);
 
-html{
+html {
   font-family: "iranyekan" !important;
 }
 
@@ -10,7 +10,7 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-a{
+a {
   text-decoration: none;
 }
 
@@ -32,4 +32,8 @@ a{
   .Toastify__toast-container {
     margin-right: -15px;
   }
+}
+.swiper-button-next-blog::after,
+.swiper-button-prev-blog::after {
+  background-image: url("../public/icons/right-arrow.svg");
 }
