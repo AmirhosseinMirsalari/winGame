@@ -12,7 +12,7 @@ export const Card = styled(Box)(({ theme }) => ({
     objectFit: "cover",
   },
 }));
-export const textStyle = { fontSize: "15px", color: "#777777" };
+export const textStyle = { fontSize: "15px", color: "#777777",margin:" 10px 0" };
 export const iconStyle = {
   fontSize: "1rem",
   marginRight: "5px",

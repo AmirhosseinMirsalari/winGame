@@ -30,7 +30,7 @@ function OurBlog() {
       <Container>
         <WrapperBox>
           <Swiper
-            spaceBetween={15}
+            spaceBetween={50}
             slidesPerView={1}
             slidesPerGroup={1}
             loop={true}
