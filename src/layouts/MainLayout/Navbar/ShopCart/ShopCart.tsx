@@ -5,10 +5,12 @@ import { shopCartWrapper } from "../styles";
 import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
 import { getSubtotal } from "utils/getSubtotal";
+import { useRouter } from "next/router";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
+  const navigate = useRouter()
 
 
   const { data: cartData, isLoading, isError } = useGetAllCartItemQuery(undefined, { skip: !!!user });
@@ -69,7 +71,7 @@ function ShopCart() {
           gap: "10px",
         }}
       >
-        <Link component={RouterLink} href="/cart" sx={{ textDecoration: "none", width: "50%" }}>
+        <Link href="/cart" sx={{ textDecoration: "none", width: "50%" }}>
           <Button
             variant="contained"
             fullWidth={true}
