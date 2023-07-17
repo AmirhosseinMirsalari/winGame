@@ -187,7 +187,7 @@ export const DropMenuItem = styled(MenuItem)(({ theme }) => ({
 }));
 export const shopCartWrapper = {
   position: "absolute",
-  right: "0px",
+  left: "0px",
   top: "82px ",
   padding: "15px",
   backgroundColor: "white",
