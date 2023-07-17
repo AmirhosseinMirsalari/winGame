@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 export const WrapperBox = styled(Box)(({ theme }) => ({
   backgroundAttachment: "fixed",
-  backgroundImage: `url(https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?w=1060&t=st=1689437030~exp=1689437630~hmac=56362ffbef072f366af34e6642d557b90b7f4b8376be45b025f8664f290e6b4e)`,
+  backgroundImage: `url(https://s8.uupload.ir/files/dark-hexagonal-background-with-gradient-color_79603-1409_6evz.jpg)`,
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
