@@ -28,6 +28,7 @@ import { productIconStyles } from "components/Product/styles";
 import { ICartItem } from "types/cart";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "redux/cart/cartSlice";
+import { QuantityInput } from "components/Cart";
 
 type Props = {
   title: string;
@@ -174,7 +175,7 @@ const ModalView = ({
           >
             {cartItem && (
               <>
-                {/* <QuantityInput cartItem={cartItem} /> */}
+                <QuantityInput cartItem={cartItem} />
                 <Button
                   variant="outlined"
                   color="error"
