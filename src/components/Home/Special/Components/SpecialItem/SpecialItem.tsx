@@ -99,7 +99,7 @@ const SpecialItem = ({ product, cartItems }: Props) => {
               </Box>
             </Typography>
             <Button variant="contained" onClick={addToCartHandler} sx={{ alignItems: "center", gap: "6px",whiteSpace:"nowrap" }}>
-              افزودن به سبد خرید
+              {inCart ? "در سبد خرید موجود است" : "افزودن به سبد خرید"}
               {cartIsLoading && <DotSpinner color="white" />}
               {inCart && <ShoppingBasket fontSize="small" />}
             </Button>
