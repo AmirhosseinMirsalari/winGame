@@ -35,15 +35,16 @@ function ShopCartItem({ id, name, price, quantity, image, productId }: Props) {
         <img src={image} alt="product" width={75} height={75} />
       </Link>
       <ListItemText sx={{ marginLeft: "16px", marginRight: "40px" }}>
+        <Link href={`/product/${productId}`}>
         <Typography
           variant="body2"
           color={"primary"}
-          component={Link}
-          to={`/product/${productId}`}
           sx={{ textDecoration: "none" }}
         >
           {name}
         </Typography>
+        </Link>
+      
         <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
           <Typography variant="subtitle1" color={"secondary"}>
             {quantity} x
