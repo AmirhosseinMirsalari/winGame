@@ -64,6 +64,10 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             name = "فروشگاه";
             route = "/shop";
           }
+          if (name === "checkout") {
+            name = "تسویه حساب";
+            route = "/checkout";
+          }
           if (name === "cart") {
             name = "سبد خرید";
             route = "/cart";
