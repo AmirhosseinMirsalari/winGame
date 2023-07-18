@@ -36,3 +36,7 @@ a {
 .swiper-button-prev::after {
   background-image: url("../public/icons/right-arrow.svg");
 }
+.WP,
+.Ez {
+  rotate: 180deg;
+}
