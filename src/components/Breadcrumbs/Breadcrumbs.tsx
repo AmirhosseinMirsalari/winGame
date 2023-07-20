@@ -72,7 +72,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             name = "سبد خرید";
             route = "/cart";
           }
-          if (name === "article") {
+          if (name === "article" || name === "blog" ) {
             name = "بلاگ";
             route = "/blog";
           }
