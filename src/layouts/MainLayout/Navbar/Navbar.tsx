@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useEffect, useState } from "react";
+import { forwardRef, Fragment, useContext, useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -31,6 +31,7 @@ import ResetPassword from "components/ResetPassword/ResetPassword";
 import Login from "components/Login/Login";
 import Register from "components/Register/Register";
 import { useAppSelector } from "redux/store";
+import OpenLoginContext from "context/openLogin";
 
 function Navbar() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -38,7 +39,8 @@ function Navbar() {
 
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
+  const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
+  // const [openLogin, setOpenLogin] = useState(false);
 
   const [collapse, setCollapse] = useState(true);
   const [modalType, setModalType] = useState("login");
@@ -58,16 +60,13 @@ function Navbar() {
   type Anchor = "left" | "right";
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
-    
-      setDisplayDrawer({ ...displayDrawer, [anchor]: open });
-    
+    setDisplayDrawer({ ...displayDrawer, [anchor]: open });
   };
   const openSearchBarHandler = () => {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
   };
 
   type Modal = "login" | "register" | "reset";
-
 
   useEffect(() => {
     let lastScroll = window.scrollY;
@@ -85,9 +84,9 @@ function Navbar() {
     };
   }, []);
 
-  useEffect(()=>{
-    setOpenSearchBar(false)
-  },[matches]);
+  useEffect(() => {
+    setOpenSearchBar(false);
+  }, [matches]);
 
   useEffect(() => {
     if (router.asPath == "/?login=open") {
@@ -111,13 +110,19 @@ function Navbar() {
                   <MenuRounded sx={menuIconStyles} />
                 </Box>
               </Box>
-              <Box sx={{ marginRight: { sx: "0", md: "30px" },marginLeft: { sx: "0", md: "40px" },cursor:"pointer" }}>
+              <Box
+                sx={{
+                  marginRight: { sx: "0", md: "30px" },
+                  marginLeft: { sx: "0", md: "40px" },
+                  cursor: "pointer",
+                }}
+              >
                 <Link href="/" onClick={() => setOpenSearchBar(false)}>
                   <img
                     src="https://s8.uupload.ir/files/logo_c024.png"
                     alt="winGame-logo"
                     width={150}
-                    style={{padding:"10px 0"}}
+                    style={{ padding: "10px 0" }}
                   />
                 </Link>
               </Box>
@@ -184,7 +189,10 @@ function Navbar() {
                   />
                 </Fragment>
               )}
-              <Fade style={{ display: openSearchBar ? "block" : "none" }} in={openSearchBar}>
+              <Fade
+                style={{ display: openSearchBar ? "block" : "none" }}
+                in={openSearchBar}
+              >
                 <Box width={"100%"}>
                   <SearchBar openSearchBarHandler={openSearchBarHandler} />
                 </Box>
@@ -207,7 +215,9 @@ function Navbar() {
         open={openLogin}
         onClose={() => {
           setOpenLogin(false);
-          router.push("/");
+          if (router.asPath == "/?login=open") {
+            router.push("/");
+          }
         }}
         closeAfterTransition
         BackdropProps={{

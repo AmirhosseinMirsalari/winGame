@@ -46,10 +46,7 @@ function Login({ setModalType, setOpenLogin }: Props) {
   const loadingRef = useRef<any>(null);
   const dispatch = useDispatch();
   const location: any = useRouter();
-
-  if (!!user) {
-    location.push("/");
-  }
+  
 
   //* username validation
   let emailIsValid = enteredEmail.trim() !== "";
@@ -80,7 +77,6 @@ function Login({ setModalType, setOpenLogin }: Props) {
       const data = response?.data;
       // toast.success("با موفقیت وارد شدید")
 
-
       dispatch(
         setCredentials({
           user: data?.details,
@@ -99,13 +95,13 @@ function Login({ setModalType, setOpenLogin }: Props) {
       }
 
       if (data?.role === "admin" || data?.role === "superAdmin") {
-        location.push("/panel/dashboard")
+        location.push("/panel/dashboard");
       }
-      if (data?.role === "user") {
-        location.push("/")
+      if (data?.role === "user" && location.asPath == "/?login=open") {
+        location.push("/");
       }
       loadingRef?.current?.complete();
-      successMessage("با موفقیت وارد شدید")
+      successMessage("با موفقیت وارد شدید");
       setOpenLogin(false);
     } catch (err: any) {
       setErrorMessage(err?.data?.message);
@@ -134,8 +130,8 @@ function Login({ setModalType, setOpenLogin }: Props) {
                   <TextField
                     variant="standard"
                     label="ایمیل"
-                    InputLabelProps={{sx:{marginLeft:"90%"}}}
-                    sx={emailError ? inputErrorStyles : {direction:"ltr"}}
+                    InputLabelProps={{ sx: { marginLeft: "90%" } }}
+                    sx={emailError ? inputErrorStyles : { direction: "ltr" }}
                     value={enteredEmail}
                     onChange={(e) => setEnteredEmail(e.target.value)}
                   />
@@ -158,7 +154,7 @@ function Login({ setModalType, setOpenLogin }: Props) {
                     variant="standard"
                     label="پسورد"
                     type={visibility ? "text" : "password"}
-                    InputLabelProps={{sx:{marginLeft:"90%"}}}
+                    InputLabelProps={{ sx: { marginLeft: "90%" } }}
                     sx={passwordError ? inputErrorStyles : {}}
                     value={enteredPassword}
                     onChange={(e) => setEnteredPassword(e.target.value)}
@@ -209,7 +205,7 @@ function Login({ setModalType, setOpenLogin }: Props) {
                 <Button
                   variant="contained"
                   fullWidth
-                  sx={{ height: "46px",borderRadius:"10px" }}
+                  sx={{ height: "46px", borderRadius: "10px" }}
                   type={"submit"}
                 >
                   ورود
@@ -227,11 +223,13 @@ function Login({ setModalType, setOpenLogin }: Props) {
             </Typography>
           </Box>
           <FormFooter>
-            <Typography component="span" sx={{marginLeft:"3px"}}>حساب کاربری ندارید؟</Typography>
+            <Typography component="span" sx={{ marginLeft: "3px" }}>
+              حساب کاربری ندارید؟
+            </Typography>
             <Button
               variant="contained"
               onClick={() => setModalType("register")}
-              sx={{borderRadius:"10px"}}
+              sx={{ borderRadius: "10px" }}
             >
               ثبت نام کنید
             </Button>
@@ -240,7 +238,9 @@ function Login({ setModalType, setOpenLogin }: Props) {
             className="close-button"
             onClick={() => {
               setOpenLogin(false);
-              location.push("/");
+              if (location.asPath == "/?login=open") {
+                location.push("/");
+              }
             }}
           >
             <CloseRounded fontSize="large" />

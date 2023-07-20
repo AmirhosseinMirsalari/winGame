@@ -14,6 +14,7 @@ import Navbar from "layouts/MainLayout/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
+import { OpenLoginContextProvider } from "context/openLogin";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -25,26 +26,27 @@ const theme = createTheme(lightThemeOptions);
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  
 
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <Head>
-              <title></title>
-              <link
-                rel="icon"
-                href="https://s8.uupload.ir/files/fav_seaf.png"
-              />
-            </Head>
-            <Navbar />
-            <Component {...pageProps} />
-            <ToastContainer />
-            <Footer />
-          </PersistGate>
+          <OpenLoginContextProvider>
+            <PersistGate loading={null} persistor={persistor}>
+              <Head>
+                <title></title>
+                <link
+                  rel="icon"
+                  href="https://s8.uupload.ir/files/fav_seaf.png"
+                />
+              </Head>
+              <Navbar />
+              <Component {...pageProps} />
+              <ToastContainer />
+              <Footer />
+            </PersistGate>
+          </OpenLoginContextProvider>
         </Provider>
       </ThemeProvider>
     </CacheProvider>
