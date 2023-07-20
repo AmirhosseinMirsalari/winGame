@@ -160,6 +160,7 @@ function Checkout() {
   }
   if (!user) {
     navigate.push("/?login=open");
+    return <Loading full />
   }
   if (!cart && isLoading) {
     return <Loading full />;
