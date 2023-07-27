@@ -11,7 +11,7 @@ export const FilterTitleWrapper = styled(Box)(({ theme }) => ({
     width: "40px",
     height: "2px",
     backgroundColor: "#f03637",
-    left: 0,
+    right: 0,
     bottom: "-1px",
   },
 }));
@@ -20,6 +20,7 @@ export const FilterListItemText = styled(ListItemText)(({ theme }) => ({
   color: "#333333",
   cursor: "pointer",
   transition: "all 200ms ease-in",
+  textAlign: "end",
   textTransform: "capitalize",
   "&:hover": {
     color: "#f03637",
@@ -32,7 +33,7 @@ export const FilterListItemText = styled(ListItemText)(({ theme }) => ({
     width: "4.5px",
     height: "5px",
     position: "absolute",
-    left: 0,
+    right: 0,
     top: "18px",
     backgroundColor: "#999999",
     transition: "all 200ms ease-in",
@@ -68,7 +69,7 @@ export const ToolbarButton = styled(Link)(({ theme }) => ({
   boxShadow: "none",
   cursor: "pointer",
   textDecoration: "none",
-  fontFamily: "jost",
+  fontFamily: "iranyekan",
   paddingRight: "5px",
   paddingLeft: "5px",
   "&:hover": {
