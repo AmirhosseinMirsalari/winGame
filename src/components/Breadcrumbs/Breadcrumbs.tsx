@@ -1,5 +1,10 @@
 import { NavigateBefore } from "@mui/icons-material";
-import { Box, Breadcrumbs as Breadcrumb, Link, Typography } from "@mui/material";
+import {
+  Box,
+  Breadcrumbs as Breadcrumb,
+  Link,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/router";
 
 interface Props {
@@ -40,7 +45,11 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
       </Typography>
       <Breadcrumb
         sx={{ "& .MuiBreadcrumbs-ol": { justifyContent: "center" } }}
-        separator={<NavigateBefore sx={{ color: "white", fontSize: "20px", margin: 0 }} />}
+        separator={
+          <NavigateBefore
+            sx={{ color: "white", fontSize: "20px", margin: 0 }}
+          />
+        }
       >
         <Link
           href="/"
@@ -57,10 +66,8 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
           let route = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
           let name = path.replace(/-/g, " ");
-          console.log(name);
-          
 
-          if (name === "product") {
+          if (name.includes("product") || Location.asPath.includes("shop")) {
             name = "فروشگاه";
             route = "/shop";
           }
@@ -72,7 +79,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             name = "سبد خرید";
             route = "/cart";
           }
-          if (name === "article" || name === "blog" ) {
+          if (name === "article" || name === "blog") {
             name = "بلاگ";
             route = "/blog";
           }
@@ -81,10 +88,16 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             route = "/contact-us";
           }
           if (name === category) {
-            route = `/${categoryRoute}?category=/${category.replace("&", "%26")}`;
+            route = `/${categoryRoute}?category=/${category.replace(
+              "&",
+              "%26"
+            )}`;
           }
           return isLast ? (
-            <Typography key={index} sx={{ color: "#fff", textTransform: "capitalize" }}>
+            <Typography
+              key={index}
+              sx={{ color: "#fff", textTransform: "capitalize" }}
+            >
               {`${lastPath ? lastPath : name}`}
             </Typography>
           ) : (
