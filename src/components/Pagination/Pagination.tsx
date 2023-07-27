@@ -12,13 +12,17 @@ type PaginationProps = {
 
 function Pagination({ productsPerPage, totalProducts, currentPage, setCurrentPage }: PaginationProps) {
   const pageNumber: number[] = [];
-  const { asPath } = useRouter();
+  const router = useRouter();
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumber.push(i);
   }
   const clickHandler = (page: number) => () => {
     setCurrentPage(page);
-    const topDist = asPath === "/shop" || asPath === "/blog" ? 200 : 0;
+    const topDist = router.asPath === "/shop" || router.asPath === "/blog" ? 200 : 0;
+    router.push({
+      pathname: "/shop",
+      query: { page },
+    });
     window.scroll({
       top: topDist,
       left: 0,
@@ -34,7 +38,7 @@ function Pagination({ productsPerPage, totalProducts, currentPage, setCurrentPag
             display: currentPage === 1 || totalProducts === 0 ? "none" : "flex",
           }}
         >
-          <ChevronLeft />
+          <ChevronRight />
         </PaginationListItem>
 
         {pageNumber.length > 1 &&
@@ -54,7 +58,8 @@ function Pagination({ productsPerPage, totalProducts, currentPage, setCurrentPag
             display: currentPage === pageNumber.length || totalProducts === 0 ? "none" : "flex",
           }}
         >
-          <ChevronRight />
+          <ChevronLeft />
+
         </PaginationListItem>
       </PaginationList>
     </Box>
