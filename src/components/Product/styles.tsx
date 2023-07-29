@@ -69,6 +69,7 @@ export const CartButtonsStyle = {
 export const productButtonStyles = {
   width: "100%",
   marginTop: "10px",
+  borderRadius: "12px",
   marginBottom: "25px",
   display: "flex",
   justifyContent: {
@@ -82,14 +83,15 @@ export const productButtonStyles = {
     display: "flex",
     alignItems: "center",
     transition: "all 0.4s ease",
+    borderRadius: "12px",
     textTransform: "capitalize",
     fontWeight: "500",
     gap: "4px",
     color: (theme: any) => theme.palette.common.digitaBlack,
-    padding: "10px 0px",
+    padding: "10px 10px",
     fontSize: "16px",
     "&:hover": {
-      color: "#F03637",
+      color: "white !important",
     },
   },
 };
@@ -107,7 +109,7 @@ export const starLink = {
   display: "flex",
   alignItems: "center",
   "& .customerReview": {
-    fontFamily: "jost",
+    fontFamily: "iranyekan",
     cursor: "pointer",
     textDecoration: "none",
     fontSize: "13px",
@@ -133,7 +135,7 @@ export const productMetaStyle = {
 };
 export const linkStyle = {
   textDecoration: "none",
-  fontFamily: "jost",
+  fontFamily: "iranyekan",
   cursor: "pointer",
   "&:hover": {
     color: "#F03637",
@@ -220,7 +222,7 @@ export const ProductTextStyle = {
 };
 
 export const ProductContentStyle = {
-  textAlign: "left",
+  textAlign: "center",
   width: { sm: "100%", md: "100%", lg: "90%" },
   "& .descriptionList": {
     listStyleType: "none",
@@ -264,9 +266,7 @@ export const SubmitButton = {
   marginBottom: "50px",
   textTransform: "capitalize",
   webkitBorderRadius: "0px",
-  mozborderRadius: "0px",
-  msBorderRadius: "0px",
-  borderRadius: "0px",
+  borderRadius: "14px",
   letterSpacing: "normal",
   marginRight: "15px",
   marginTop: "15px",
@@ -387,7 +387,7 @@ export const galleryModalButtonStyles = {
   float: "right",
   zIndex: "1111",
   cursor: "pointer",
-  margin: "20px 20px 0 0",
+  margin: "20px 0 0 20px",
   "& .MuiSvgIcon-root": {
     transition: "all 150ms",
     color: "#fff",
@@ -458,7 +458,7 @@ export const ProductColor = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   cursor: "pointer",
   display: "flex",
-  marginLeft: "10px",
+  marginRight: "15px",
   transition: "all 150px",
   boxShadow: "0 0 8px 2px rgb(0 0 0 / 20%)",
   boxSizing: "border-box",
@@ -494,6 +494,7 @@ export const colorBoxStyles = {
 
 export const Tab = styled(TabUnstyled)`
   white-space: nowrap;
+  font-family:iranyekan;
   height: 100%;
   font-size: 16px;
   font-weight: 500;
