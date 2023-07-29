@@ -1,7 +1,15 @@
 import { Fragment, useState } from "react";
 import { ProductContentStyle, SubmitButton } from "../../styles";
 import { PFormControl } from "../../../../../styles/panel";
-import { Typography, Box, Rating, Divider, Button, FormLabel, TextField } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Rating,
+  Divider,
+  Button,
+  FormLabel,
+  TextField,
+} from "@mui/material";
 import Review from "./Review/Review";
 import { useAppSelector } from "redux/store";
 import { useAddReviewMutation } from "redux/reviews/reviewsApi";
@@ -17,16 +25,18 @@ const Reviews = ({ reviews, id }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  const { indexOfLoadedReviews, loadMoreReviewsHandler } = useLoadReviews(reviews);
+  const { indexOfLoadedReviews, loadMoreReviewsHandler } =
+    useLoadReviews(reviews);
   const location = useRouter();
 
   const [addReview] = useAddReviewMutation();
 
+  console.log(location.pathname);
+  
+
   const submitReviewHandler = async () => {
     if (!user) {
-      location.push(
-        { pathname: location.pathname, search: "tab=reviews&login=open" },
-      );
+      location.push("/?login=open");
       return;
     }
     try {
@@ -83,21 +93,12 @@ const Reviews = ({ reviews, id }: Props) => {
             sx={{ display: "block", margin: "10px 0 0 auto" }}
             onClick={loadMoreReviewsHandler}
           >
-            {indexOfLoadedReviews < reviews.length ? "Load More..." : "close"}
+            {indexOfLoadedReviews < reviews.length ? "بارگذاری بیشتر" : "بستن"}
           </Button>
         )}
-        <Typography
-          component="p"
-          sx={{
-            color: "common.digitaGrey3",
-            fontSize: "14px",
-            marginTop: "20px",
-          }}
-        >
-          ارسال کامنت
-        </Typography>
+    
 
-        <Box mb={2}>
+        <Box mb={2} mt={10}>
           <Typography
             component="p"
             sx={{
@@ -105,10 +106,14 @@ const Reviews = ({ reviews, id }: Props) => {
               fontSize: "14px",
               marginTop: "10px",
               marginBottom: "5px",
+              textAlign:"start",
             }}
           >
             امتیاز شما
-            <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
+            <Typography
+              component={"span"}
+              sx={{ color: "#f03637", marginRight : "4px" }}
+            >
               *
             </Typography>
           </Typography>
@@ -116,7 +121,9 @@ const Reviews = ({ reviews, id }: Props) => {
           <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {[1, 2, 3, 4, 5].map((rate) => (
               <Fragment key={rate}>
-                {rate !== 1 && <Divider orientation="vertical" variant="middle" flexItem />}
+                {rate !== 1 && (
+                  <Divider orientation="vertical" variant="middle" flexItem />
+                )}
                 <Box
                   sx={{
                     cursor: "pointer",
@@ -127,7 +134,12 @@ const Reviews = ({ reviews, id }: Props) => {
                   }}
                   onClick={() => setRating(rate)}
                 >
-                  <Rating name="read-only" defaultValue={rate} readOnly max={rate} />
+                  <Rating
+                    name="read-only"
+                    defaultValue={rate}
+                    readOnly
+                    max={rate}
+                  />
                 </Box>
               </Fragment>
             ))}
@@ -136,9 +148,15 @@ const Reviews = ({ reviews, id }: Props) => {
 
         <Box>
           <PFormControl>
-            <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px" }}>
-              Your review
-              <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
+            <FormLabel
+              color="primary"
+              sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px",textAlign:"start",marginTop:"5px" }}
+            >
+              نظر شما
+              <Typography
+                component={"span"}
+                sx={{ color: "#f03637", marginRight: "3px" }}
+              >
                 *
               </Typography>
             </FormLabel>
@@ -146,8 +164,10 @@ const Reviews = ({ reviews, id }: Props) => {
               multiline
               rows={6}
               sx={{
+                borderRadius: "15px",
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "common.digitaGrey6",
+                  borderRadius: "15px"
                 },
               }}
               value={reviewDescription}
@@ -156,7 +176,11 @@ const Reviews = ({ reviews, id }: Props) => {
           </PFormControl>
         </Box>
 
-        <Button variant="contained" sx={SubmitButton} onClick={submitReviewHandler}>
+        <Button
+          variant="contained"
+          sx={SubmitButton}
+          onClick={submitReviewHandler}
+        >
           {user ? "ثبت نظر" : "ورود و ثبت نظر"}
         </Button>
       </Box>

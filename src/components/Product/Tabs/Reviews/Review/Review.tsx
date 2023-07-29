@@ -59,7 +59,7 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
             }}
           >
             <Typography component="p" sx={{ fontSize: { xs: "12px", sm: "14px" } }}>
-              <span className="userName">{user?.userName} </span>
+              <span className="userName">{user ? `${user?.userName}` : "کاربر سایت"} </span>
               <time> {`– ${readableDate}`}</time>
             </Typography>
             {asPath.includes("product") && <Rating name="read-only" defaultValue={rating} size="small" readOnly />}
@@ -71,6 +71,7 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
               sx={{
                 color: "common.digitaGrey",
                 fontSize: { xs: "14px", sm: "16px" },
+                textAlign: "start"
               }}
             >
               {description}
