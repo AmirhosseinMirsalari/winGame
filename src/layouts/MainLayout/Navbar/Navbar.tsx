@@ -149,7 +149,7 @@ function Navbar() {
                                   },
                                   "& .shop-menu": {
                                     display:
-                                      item.name === "shop" ? "block" : "none",
+                                      item.name === "فروشگاه" ? "block" : "none",
                                   },
                                 },
                                 overflow: "visible !important",
@@ -160,13 +160,13 @@ function Navbar() {
                               <Link href={item.route}>
                                 <Box sx={tabLinkStyles}>
                                   <Box>{item.name}</Box>
-                                  {item.name === "shop" && (
+                                  {item.name === "فروشگاه" && (
                                     <KeyboardArrowDown />
                                   )}
                                 </Box>
                               </Link>
 
-                              {item.name === "shop" && (
+                              {item.name === "فروشگاه" && (
                                 <ShopMenuWrapper className={"shop-menu"}>
                                   <ShopMenu />
                                 </ShopMenuWrapper>
