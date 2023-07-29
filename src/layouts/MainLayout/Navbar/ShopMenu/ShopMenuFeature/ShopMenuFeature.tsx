@@ -22,7 +22,7 @@ function ShopMenuFeature() {
         fontWeight={600}
         sx={{ marginLeft: "10%", marginBottom: "15px" }}
       >
-        feature by category
+        دسته بندی های پرطرفدار
       </Typography>
       <Grid container>
         {shopMenuCategories.map((item) => (

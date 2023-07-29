@@ -11,7 +11,7 @@ function ShopMenuCategories() {
           color="primary"
           fontWeight={600}
         >
-          new arrivals
+          محصولات جدید
         </Typography>
         <Box marginTop={2}>
           {shopMenuItems.map((item) => (
@@ -35,10 +35,10 @@ function ShopMenuCategories() {
             color="primary"
             fontWeight={600}
           >
-            weekly trend
+            پرفروش های هفته
           </Typography>
           <Box marginTop={2}>
-            {shopMenuItems.slice(6, 9).map((item) => (
+            {shopMenuItems.slice(5, 9).map((item) => (
               <ShopSubTitle key={item.id}>{item.name}</ShopSubTitle>
             ))}
           </Box>
@@ -49,7 +49,7 @@ function ShopMenuCategories() {
             color="primary"
             fontWeight={600}
           >
-            weekly trend
+            پرفروش های ماه
           </Typography>
           <Box marginTop={2}>
             {shopMenuItems.slice(6, 9).map((item) => (
