@@ -2,7 +2,7 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
-
+import NextNProgress from "nextjs-progressbar";
 import createEmotionCache from "../../styles/theme/createEmotionCache";
 import lightThemeOptions from "../../styles/theme";
 import "../../styles/globals.css";
@@ -41,6 +41,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
                   href="https://s8.uupload.ir/files/fav_seaf.png"
                 />
               </Head>
+              <NextNProgress height={3} color="red" />
               <Navbar />
               <Component {...pageProps} />
               <ToastContainer />
