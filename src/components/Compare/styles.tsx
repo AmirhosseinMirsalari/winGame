@@ -82,6 +82,7 @@ export const CTCell = styled(TableCell)(({ theme }) => ({
 export const CTButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.common.digitaRed,
   textWrap: "nowrap",
+  borderRadius:"12px",
   textAlign: "center",
   color: "white",
   [theme.breakpoints.down("sm")]: {
