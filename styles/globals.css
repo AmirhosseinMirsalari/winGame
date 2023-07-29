@@ -1,4 +1,5 @@
 @import url(../public/fonts/css/fontiran.css);
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 html {
   font-family: "iranyekan" !important;
@@ -39,4 +40,28 @@ a {
 .WP,
 .Ez {
   rotate: 180deg;
+}
+.image-gallery-image{
+  width: 300px;
+  height: 300px;
+}
+.image-gallery-thumbnail-image{
+  width: 100px;
+  height: 100px;
+  object-fit: scale-down;
+  margin-top: 15px;
+  border: none;
+}
+.image-gallery-right-nav:hover,.image-gallery-left-nav:hover{
+  color: red;
+}
+.image-gallery-thumbnail:hover {
+  border: 3px solid #b8b7b7;
+  border-radius: 10px;
+}
+
+.image-gallery-thumbnail.active, .image-gallery-thumbnail:focus {
+  border: 1px solid rgb(53, 53, 53);
+  border-radius: 10px;
+
 }
