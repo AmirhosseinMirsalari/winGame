@@ -29,9 +29,10 @@ function ShopMenuCard() {
           }}
         >
           <img
-            src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665234041/digita-images/static/azfqeqtpewfoilokcz7a.jpg"
+            src="https://www.technolife.ir/wp-content/uploads/2022/03/ps5-vs-ps4.jpg"
             alt="gaming-pc"
             className="pc-img"
+            style={{borderRadius:"20px"}}
           />
         </Box>
         <Box
@@ -48,23 +49,15 @@ function ShopMenuCard() {
           className="bg-box"
         >
           <Typography
-            variant="body1"
-            color={"white"}
-            textTransform={"uppercase"}
-            marginTop={1}
-          >
-            limited edition{" "}
-          </Typography>
-          <Typography
             variant="h4"
             fontWeight={500}
             color={"white"}
             textTransform={"capitalize"}
-            sx={{ fontSize: { md: "25px", lg: "35px" } }}
+            sx={{ fontSize: { md: "25px", lg: "35px" }, textAlign: "center"}}
           >
-            best gaming pc 2022
+            خرید انواع کنسول های بازی
           </Typography>
-          <ShopMenuButton>Shop Now</ShopMenuButton>
+          <ShopMenuButton href="/shop">مشاهده فروشگاه</ShopMenuButton>
         </Box>
       </Box>
     </Item>
