@@ -4,23 +4,25 @@ import Sidebar from "./Sidebar/Sidebar";
 import { ArrowBack } from "@mui/icons-material";
 import { useAppSelector } from "redux/store";
 import Link from "next/link";
-import { CardWrapper,wrapper } from "../../../styles/user";
+import { CardWrapper, wrapper } from "../../../styles/user";
 import General from "components/Settings/General/General";
 import Password from "components/Settings/Password/Password";
+import Head from "next/head";
 
 const PersonalInfo = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);
-
 
   const [activePage, setActivePage] = useState("general");
 
   const activePageHandler = (page: string) => () => {
     setActivePage(page);
   };
-  
 
   return (
     <Box sx={wrapper}>
+      <Head>
+        <title>وین گیم | اطلاعات شخصی کاربر</title>
+      </Head>
       <CardWrapper>
         <Box sx={{ display: "flex", gap: "10px" }}>
           <Link href="/user">
