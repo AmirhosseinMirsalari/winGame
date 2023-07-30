@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 export const UserWrapper = styled(Box)(({ theme }) => ({
   padding: "40px",
   backgroundColor:"#efefef",
-  height: "calc(100vh - 90px)",
+  minHeight: "calc(100vh - 90px)",
   [theme.breakpoints.down("md")]: {
     padding: "0",
     height: "calc(100vh - 50px)",
@@ -36,6 +36,7 @@ export const Aside = styled(Box)(({ theme }) => ({
 
 export const Main = styled(Box)(({ theme }) => ({
   /* padding: "30px", */
+  backgroundColor: "#efefef",
   // width: "100%",
   marginRight: "auto",
     height: "100% !important",
@@ -48,7 +49,7 @@ export const Main = styled(Box)(({ theme }) => ({
 }));
 
 export const UserItem = styled(ListItem)(({ theme }) => ({
-  fontFamily: "jost",
+  fontFamily: "iranyekan",
   padding: "3px 0",
   ".link": {
     padding: "8px 10px",
@@ -130,7 +131,7 @@ export const topMenuItem = {
 /* =================== Profile ===================== */
 export const wrapper = {
   padding: "20px",
-  backgroundColor: "#efefef",
+  backgroundColor: "#efefef !important",
   marginRight:"25px",
   "& .orderImg": {
     width: "80px",
