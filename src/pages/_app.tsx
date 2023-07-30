@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import { OpenLoginContextProvider } from "context/openLogin";
+import { useRouter } from "next/router";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -27,6 +28,8 @@ const theme = createTheme(lightThemeOptions);
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
+  const router = useRouter();
+
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
@@ -35,7 +38,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
           <OpenLoginContextProvider>
             <PersistGate loading={null} persistor={persistor}>
               <Head>
-                <title></title>
+                <title>فروشگاه اینترنتی وین گیم</title>
                 <link
                   rel="icon"
                   href="https://s8.uupload.ir/files/fav_seaf.png"
@@ -45,7 +48,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
               <Navbar />
               <Component {...pageProps} />
               <ToastContainer />
-              <Footer />
+              {!router.asPath.includes("user") && <Footer />}
             </PersistGate>
           </OpenLoginContextProvider>
         </Provider>
