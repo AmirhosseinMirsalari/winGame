@@ -3,6 +3,7 @@
 
 html {
   font-family: "iranyekan" !important;
+  overflow-x: auto;
 }
 
 body {
