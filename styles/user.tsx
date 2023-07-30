@@ -3,8 +3,12 @@ import { styled } from "@mui/material/styles";
 
 export const UserWrapper = styled(Box)(({ theme }) => ({
   padding: "40px",
+  backgroundColor:"#efefef",
+  height: "calc(100vh - 90px)",
   [theme.breakpoints.down("md")]: {
     padding: "0",
+    height: "calc(100vh - 50px)",
+
   },
   margin: "auto",
 }));
@@ -13,6 +17,7 @@ export const Aside = styled(Box)(({ theme }) => ({
   backgroundColor: "white",
   // width: "25%",
   borderRadius: "12px",
+  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", /* اعمال سایه */
   padding: "10px",
   border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`,
   [theme.breakpoints.down("lg")]: {
@@ -20,7 +25,7 @@ export const Aside = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.up("md")]: {
     position: "fixed",
-    width: "24%",
+    width: "30%",
     padding: "0 10px",
     maxWidth: "422px",
   },
@@ -32,7 +37,9 @@ export const Aside = styled(Box)(({ theme }) => ({
 export const Main = styled(Box)(({ theme }) => ({
   /* padding: "30px", */
   // width: "100%",
-  marginLeft: "auto",
+  marginRight: "auto",
+    height: "100% !important",
+
   /* border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`, */
   borderRadius: "12px",
   [theme.breakpoints.up("md")]: {
@@ -58,7 +65,7 @@ export const UserItem = styled(ListItem)(({ theme }) => ({
     },
     "&.active": {
       backgroundColor: theme.palette.common.panelActiveRed,
-      borderLeft: "7px solid red",
+      borderRight: "7px solid red",
       "&:hover": {
         backgroundColor: theme.palette.common.panelActiveRed,
       },
@@ -84,7 +91,7 @@ export const userAvatarStyle = {
   display: "flex",
   alignItems: "center",
   cursor: "pointer",
-  marginLeft: "5px",
+  marginRight: "5px",
   img: {
     width: "40px",
     borderRadius: "50%",
@@ -106,7 +113,7 @@ export const UserNavItem = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   margin: "0.8rem 0",
-  padding: ".8rem .5rem 0 .4rem",
+  padding: ".8rem .4rem 0 .5rem",
 }));
 
 export const topMenuItem = {
@@ -115,7 +122,7 @@ export const topMenuItem = {
   "&:hover": {
     "& .navIcon": {
       transition: "0.2s",
-      marginLeft: "0.4rem",
+      marginRight: "0.4rem",
     },
   },
 };
@@ -123,7 +130,8 @@ export const topMenuItem = {
 /* =================== Profile ===================== */
 export const wrapper = {
   padding: "20px",
-  overflow: "auto",
+  backgroundColor: "#efefef",
+  marginRight:"25px",
   "& .orderImg": {
     width: "80px",
   },
@@ -171,7 +179,7 @@ export const deleteBtn = {
   border: "1px solid #d8d8d8",
   color: "#555",
   fontSize: "16px",
-  padding: "0.1rem 0.4rem 0.1rem 0 !important",
+  padding: "0.1rem 0 0.1rem 0.4rem !important",
   "&:hover": { backgroundColor: "#999", color: "#fff" },
 };
 
