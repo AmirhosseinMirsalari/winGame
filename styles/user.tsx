@@ -211,10 +211,11 @@ export const addBtn = {
   borderRadius: "4px",
   backgroundColor: "#fff",
   color: "common.digitaRed",
+  whiteSpace: "nowrap",
   fontWeight: 400,
   border: "1px solid #f03637",
-  fontSize: { sx: "16px", md: "13px", lg: "16px" },
-  padding: "0.1rem 0.4rem 0.1rem 0 !important",
+  fontSize: { sx: "16px", md: "13px", lg: "10px" },
+  padding: "0.1rem 0 0.1rem 0.4rem !important",
   "&:hover": {
     backgroundColor: "#f03637",
     color: "#fff",
