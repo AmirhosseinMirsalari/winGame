@@ -3,7 +3,7 @@ import { Add, MoreVert } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { IAddress } from "types/user";
 import { between } from "../../../../../styles/user";
-const options = ["Edit", "Delete"];
+const options = ["ویرایش", "حذف"];
 
 interface Props {
   address: IAddress;
@@ -19,7 +19,7 @@ function Address({ address, editAddress, deleteAddress, selectAddress }: Props) 
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (option: string) => {
-    if (option === "Edit") {
+    if (option === "ویرایش") {
       editAddress!(address);
     } else {
       deleteAddress!(address._id!);
