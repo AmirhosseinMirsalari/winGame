@@ -66,7 +66,7 @@ const OrderItem = ({ id, date, status, products }: T) => {
           <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>{getReadableDate(date)}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>کد سفارش:</Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" },whiteSpace:"nowrap" }}>کد سفارش:</Typography>
           <Typography>{id}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
