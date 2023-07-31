@@ -132,7 +132,7 @@ export const topMenuItem = {
 export const wrapper = {
   padding: "20px",
   backgroundColor: "#efefef !important",
-  marginRight:"25px",
+  marginRight:"30px",
   "& .orderImg": {
     width: "80px",
   },
@@ -141,6 +141,29 @@ export const wrapper = {
     display: { md: "none" },
   },
 };
+
+export const wrapperMobile = {
+  padding: "20px",
+  backgroundColor: "#efefef !important",
+  width:"106%",
+  borderRadius: "10px",
+  marginRight:"-10px",
+  marginTop:"-1px",
+  "& .orderImg": {
+    width: "80px",
+  },
+  "&.sidebar": {
+    border: "none",
+    display: { md: "none" },
+  },
+};
+
+// width: 106%;
+// margin-right: -10px;
+// border-radius: 10px;
+/* margin: 6px 0px; */
+/* padding-top: 20px; */
+// margin-top: -1px;
 
 export const profileWrapper = {
   cursor: "pointer",
