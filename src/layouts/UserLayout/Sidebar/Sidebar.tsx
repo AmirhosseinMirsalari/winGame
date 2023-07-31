@@ -9,10 +9,9 @@ import {
 } from "@mui/material";
 import { userSidebarOptions } from "../data";
 import SidebarTop from "./SidebarTop/SidebarTop";
-// import MyOrders from "components/UserStatus/MyOrders/MyOrders";
-import Link from "next/link";
 import { UserItem } from "../../../../styles/user";
 import { useRouter } from "next/router";
+import MyOrders from "components/UserStatus/MyOrders/MyOrders";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -22,7 +21,7 @@ const Sidebar = () => {
       <SidebarTop />
       <Divider sx={{ borderColor: "common.panelBorderGrey" }} />
 
-      {/* <MyOrders sidebar={true} /> */}
+      <MyOrders sidebar={true} />
       <Divider
         sx={{ borderColor: "common.panelBorderGrey", display: { md: "none" } }}
       />
