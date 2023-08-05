@@ -6,6 +6,7 @@ import { useAppSelector } from "redux/store";
 import { getSubtotal } from "utils/getSubtotal";
 import Link from "next/link";
 import { ICartItem } from "types/cart";
+import { numberFormat } from "utils/numberFormat";
 
 type T = {
   cartItems: ICartItem[];
@@ -34,7 +35,7 @@ const CartModal = ({ cartItems, setOpenCart }: T) => {
         component="h2"
         sx={{ margin: "0.8rem 0", color: "#777" }}
       >
-        {`${cartItems.length} محصول در سبد خرید به ارزش ${cartSubtotal} تومان`}
+        {`${cartItems.length} محصول در سبد خرید به ارزش ${numberFormat(cartSubtotal)} تومان`}
       </Typography>
       <Box sx={{ display: "flex", gap: 3, margin: "0.5rem 0" }}>
         <Button

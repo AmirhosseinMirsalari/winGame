@@ -6,6 +6,7 @@ import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
 import { getSubtotal } from "utils/getSubtotal";
 import { useRouter } from "next/router";
+import { numberFormat } from "utils/numberFormat";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -59,7 +60,7 @@ function ShopCart() {
           مجموع :
         </Typography>
         <Typography variant="subtitle2" color={"primary"}>
-           {cartSubtotal} تومان 
+           {numberFormat(cartSubtotal)} تومان 
         </Typography>
       </Box>
       <Divider />

@@ -45,6 +45,7 @@ import CompareModal from "components/Compare/Compare";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import ImageGallery from "react-image-gallery";
+import { numberFormat } from "utils/numberFormat";
 
 interface Props {
   product: IProduct;
@@ -169,7 +170,7 @@ const ProductDetails = ({ product }: Props) => {
             </Box>
             <Box sx={filledPrice}>
               <bdi style={{ fontFamily: "iranyekan" }}>{`${
-                offPrice ? offPrice : ` ${price} هزار تومان`
+                offPrice ? offPrice : ` ${numberFormat(price)} هزار تومان`
               }`}</bdi>
             </Box>
 

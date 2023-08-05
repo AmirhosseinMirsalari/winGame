@@ -3,6 +3,7 @@ import { StyledTableCell, TotalTextStyle } from "../../styles";
 import { styled } from "@mui/material/styles";
 import { useAppSelector } from "redux/store";
 import { useRouter } from "next/router";
+import { numberFormat } from "utils/numberFormat";
 
 type Props = {
   total: number;
@@ -51,7 +52,7 @@ const CartTotalTable = ({ total }: Props) => {
                   color: "#f03637",
                 }}
               >
-                {total} تومان
+                {numberFormat(total)} تومان
               </TableCell>
             </TableRow>
             <TableRow>
@@ -98,7 +99,7 @@ const CartTotalTable = ({ total }: Props) => {
                     }
                   )}
                 >
-                  {total} تومان
+                  {numberFormat(total)} تومان
                 </Typography>
               </TableCell>
             </TableRow>

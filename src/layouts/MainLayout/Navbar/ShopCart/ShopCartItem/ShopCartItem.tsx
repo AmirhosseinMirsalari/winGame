@@ -12,6 +12,7 @@ import { shopCartCloseIcon } from "../../styles";
 import Link from "next/link";
 import { useAppSelector } from "redux/store";
 import { useDeleteFromCartMutation } from "redux/cart/cartApi";
+import { numberFormat } from "utils/numberFormat";
 
 interface Props {
   id: string;
@@ -74,7 +75,7 @@ function ShopCartItem({ id, name, price, quantity, image, productId }: Props) {
             sx={{ textDecoration: "none", textAlign: "start" }}
             color={"primary"}
           >
-            {price}
+            {numberFormat(price)}
           </Typography>
         </Box>
       </ListItemText>

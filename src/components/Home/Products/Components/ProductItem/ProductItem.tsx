@@ -41,6 +41,7 @@ import { isInList } from "utils/isInList";
 import { useAddToCart } from "hooks/useAddToCart";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { numberFormat } from "utils/numberFormat";
 
 type Props = {
   product: IProduct;
@@ -355,11 +356,11 @@ const ProductItem = ({ product, listView }: Props) => {
                 component="span"
                 sx={{ marginRight: "0.5rem", textDecoration: "line-through" }}
               >
-                {`$${offPrice}`}
+                {`${numberFormat(offPrice)} تومان`}
               </Box>
             )}
             <Box component="span" sx={{ color: "red", fontWeight: "bold" }}>
-              {`${price} تومان`}
+              {`${numberFormat(price)} تومان`}
             </Box>
           </Typography>
           {listView && (

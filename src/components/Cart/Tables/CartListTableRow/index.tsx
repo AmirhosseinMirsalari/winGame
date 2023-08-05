@@ -8,6 +8,7 @@ import { removeFromCart } from "redux/cart/cartSlice";
 import { useDeleteFromCartMutation } from "redux/cart/cartApi";
 import { useAppSelector } from "redux/store";
 import Link from "next/link";
+import { numberFormat } from "utils/numberFormat";
 
 type Props = {
   cartItem: ICartItem;
@@ -64,7 +65,7 @@ const CartListTableRow = ({ cartItem }: Props) => {
         <Link href={`/product/${cartItem.productId._id}`}>{cartItem?.name}</Link>
       </StyledTableCell>
       <StyledTableCell sx={{ color: "#f03637" }} align="left">
-        <span>قیمت</span>{cartItem?.price} تومان
+        <span>قیمت</span>{numberFormat(cartItem?.price)} تومان
       </StyledTableCell>
       <StyledTableCell align="center">
         <span>تغییر تعداد</span>
@@ -77,7 +78,7 @@ const CartListTableRow = ({ cartItem }: Props) => {
         )}
       </StyledTableCell>
       <StyledTableCell align="right" sx={{ color: "#f03637",marginBottom:"20px" }}>
-        {(cartItem?.quantity * +cartItem.price)}
+        {numberFormat((cartItem?.quantity * +cartItem.price))}
         <span>تعداد</span>
       </StyledTableCell>
     </TableRow>

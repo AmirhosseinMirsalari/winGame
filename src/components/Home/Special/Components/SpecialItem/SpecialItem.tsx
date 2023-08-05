@@ -10,6 +10,7 @@ import { ShoppingBasket } from "@mui/icons-material";
 import DotSpinner from "components/Loading/DotSpinner";
 import CartModal from "components/Home/Products/Components/Modals/CartModal/CartModal";
 import Link from "next/link";
+import { numberFormat } from "utils/numberFormat";
 
 type Props = {
   product: IProduct;
@@ -95,7 +96,7 @@ const SpecialItem = ({ product, cartItems }: Props) => {
                 {offPrice !== 0 && `${offPrice}تومان `}
               </Box>
               <Box component="span" sx={{ marginLeft: "5px", color: "red", fontWeight: "bold" }}>
-                {`${price} تومان`}
+                {`${numberFormat(price)} تومان`}
               </Box>
             </Typography>
             <Button variant="contained" onClick={addToCartHandler} sx={{ alignItems: "center", gap: "6px",whiteSpace:"nowrap" }}>
