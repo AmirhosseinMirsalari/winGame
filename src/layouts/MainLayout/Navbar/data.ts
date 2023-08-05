@@ -33,11 +33,11 @@ export const shopMenuItems = [
   },
   {
     id: 2,
-    name: "موبایل هوشمند",
+    name: "موبایل",
   },
   {
     id: 3,
-    name: "بازی های ویدویی",
+    name: "بازی های ویدیویی",
   },
   {
     id: 5,
@@ -69,12 +69,12 @@ export const shopMenuCategories = [
   },
   {
     id: 2,
-    name: "گوشی هوشمند",
+    name: "موبایل",
     img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233843/digita-images/static/b8t1ncn0hdll7xujjf8v.png",
   },
   {
     id: 3,
-    name: "تکنولوژی",
+    name: "واقعیت مجازی",
     img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233867/digita-images/static/jshwc6pd7h0rewchzkm3.png",
   },
   {

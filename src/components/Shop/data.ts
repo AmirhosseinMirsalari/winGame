@@ -1,73 +1,57 @@
 export const productCategories = [
   {
     id: 1,
-    name: "audio & video game",
+    name: "بازی های ویدیویی",
   },
   {
     id: 2,
-    name: "bluetooth speaker",
+    name: "اسپیکر بلوتوثی",
   },
   {
     id: 3,
-    name: "camera photo",
+    name: "دوربین عکاسی",
   },
   {
     id: 4,
-    name: "headphone",
+    name: "هدفون",
   },
   {
     id: 5,
-    name: "houseware",
+    name: "واقعیت مجازی",
   },
   {
     id: 6,
-    name: "pc & laptop",
+    name: "کامپیوتر و لپتاب",
   },
   {
     id: 7,
-    name: "phone accessories",
-  },
-  {
-    id: 8,
-    name: "smart tv",
+    name: "اکسسوری موبایل",
   },
   {
     id: 9,
-    name: "smart watch",
+    name: "ساعت هوشمند",
   },
   {
     id: 10,
-    name: "smartphone & ipad",
-  },
-  {
-    id: 11,
-    name: "technologies",
-  },
-  {
-    id: 12,
-    name: "virtual reality glasses",
-  },
-  {
-    id: 13,
-    name: "xbox console",
+    name: "موبایل",
   },
 ];
 
 export const filterColors = [
   {
     id: 1,
-    color: "black",
+    color: "مشکی",
   },
   {
     id: 2,
-    color: "blue",
+    color: "آبی",
   },
   {
     id: 3,
-    color: "red",
+    color: "قرمز",
   },
   {
     id: 4,
-    color: "white",
+    color: "سفید",
   },
 ];
