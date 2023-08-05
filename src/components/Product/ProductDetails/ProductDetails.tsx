@@ -21,7 +21,6 @@ import {
   productIconStyles,
 } from "../styles";
 import {
-  DeleteForever,
   Favorite,
   FavoriteBorder,
   Shuffle,
@@ -37,10 +36,9 @@ import {
 import WishModal from "components/Home/Products/Components/Modals/WishModal/WishModal";
 import { useGetReviewsQuery } from "redux/reviews/reviewsApi";
 import { isInList } from "utils/isInList";
-import { useGetAllCartItemQuery } from "redux/cart/cartApi";
+import {  useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { QuantityInput } from "components/Cart";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "redux/cart/cartSlice";
 import { useAddToCart } from "hooks/useAddToCart";
 import { addToCompareList } from "redux/compare/compareSlice";
 import CompareModal from "components/Compare/Compare";
@@ -102,9 +100,9 @@ const ProductDetails = ({ product }: Props) => {
     colors,
     shortDescription,
     gallery,
+    category
   } = product;
-
-  console.log(gallery);
+  
 
   const isCompared = isInList(compareList, _id!);
 
@@ -127,10 +125,6 @@ const ProductDetails = ({ product }: Props) => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const cartItemDeleteHandler = () => {
-    dispatch(removeFromCart(cartItem?._id!));
   };
 
   const compareClickHandler = () => {
@@ -199,17 +193,6 @@ const ProductDetails = ({ product }: Props) => {
                 {inCart && (
                   <>
                     <QuantityInput cartItem={cartItem!} />
-                    <Button
-                      variant="outlined"
-                      color="error"
-                      sx={{
-                        padding: "0 20px!important",
-                        "&:hover .delete-icon": { color: "#fff" },
-                      }}
-                      onClick={cartItemDeleteHandler}
-                    >
-                      <DeleteForever className="delete-icon" />
-                    </Button>
                     <Link href="/cart">
                       <Button
                         variant="contained"
@@ -281,7 +264,7 @@ const ProductDetails = ({ product }: Props) => {
               <Typography component="span" className="span">
                 دسته بندی :
               </Typography>
-              <Button sx={linkStyle}>{" Audio & Video Game"}</Button>
+              <Button onClick={()=>location.push(`/shop?category=%2F${category}`)} sx={linkStyle}>{category}</Button>
             </Box>
           </Box>
         </Grid>
