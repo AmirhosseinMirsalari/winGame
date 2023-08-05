@@ -1,8 +1,5 @@
 export const productCategories = [
-  {
-    id: 1,
-    name: "بازی های ویدیویی",
-  },
+
   {
     id: 2,
     name: "اسپیکر بلوتوثی",
@@ -20,16 +17,12 @@ export const productCategories = [
     name: "واقعیت مجازی",
   },
   {
-    id: 6,
-    name: "کامپیوتر و لپتاب",
-  },
-  {
-    id: 7,
-    name: "اکسسوری موبایل",
-  },
-  {
     id: 9,
     name: "ساعت هوشمند",
+  },
+  {
+    id: 1,
+    name: "بازی های ویدیویی",
   },
   {
     id: 10,
