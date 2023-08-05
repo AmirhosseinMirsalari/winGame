@@ -64,7 +64,7 @@ const CartListTableRow = ({ cartItem }: Props) => {
         <Link href={`/product/${cartItem.productId._id}`}>{cartItem?.name}</Link>
       </StyledTableCell>
       <StyledTableCell sx={{ color: "#f03637" }} align="left">
-        <span>قیمت</span>${cartItem?.price.toFixed(2)}
+        <span>قیمت</span>{cartItem?.price} تومان
       </StyledTableCell>
       <StyledTableCell align="center">
         <span>تغییر تعداد</span>
@@ -77,7 +77,7 @@ const CartListTableRow = ({ cartItem }: Props) => {
         )}
       </StyledTableCell>
       <StyledTableCell align="right" sx={{ color: "#f03637",marginBottom:"20px" }}>
-        ${(cartItem?.quantity * +cartItem.price).toFixed(2)}
+        {(cartItem?.quantity * +cartItem.price)}
         <span>تعداد</span>
       </StyledTableCell>
     </TableRow>

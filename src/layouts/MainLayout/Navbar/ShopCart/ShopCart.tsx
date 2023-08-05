@@ -59,7 +59,7 @@ function ShopCart() {
           مجموع :
         </Typography>
         <Typography variant="subtitle2" color={"primary"}>
-          {cartSubtotal?.toFixed(2)}
+           {cartSubtotal} تومان 
         </Typography>
       </Box>
       <Divider />

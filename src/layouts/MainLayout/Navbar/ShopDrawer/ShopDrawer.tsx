@@ -71,7 +71,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
             مجموع سبد خرید:
           </Typography>
           <Typography variant="subtitle2" color={"primary"}>
-            {subtotal?.toFixed(2)}
+            {subtotal}
           </Typography>
         </Box>
         <Divider />

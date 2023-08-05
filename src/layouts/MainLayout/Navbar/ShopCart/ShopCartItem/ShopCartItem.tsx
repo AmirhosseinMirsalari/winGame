@@ -74,7 +74,7 @@ function ShopCartItem({ id, name, price, quantity, image, productId }: Props) {
             sx={{ textDecoration: "none", textAlign: "start" }}
             color={"primary"}
           >
-            {price.toFixed(2)}
+            {price}
           </Typography>
         </Box>
       </ListItemText>

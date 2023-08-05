@@ -92,10 +92,10 @@ const SpecialItem = ({ product, cartItems }: Props) => {
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ margin: "0.2rem" }}>
               <Box component="span" sx={{ textDecoration: "line-through" }}>
-                {offPrice !== 0 && `$${offPrice}.00`}
+                {offPrice !== 0 && `${offPrice}تومان `}
               </Box>
               <Box component="span" sx={{ marginLeft: "5px", color: "red", fontWeight: "bold" }}>
-                {`$${price}.00`}
+                {`${price} تومان`}
               </Box>
             </Typography>
             <Button variant="contained" onClick={addToCartHandler} sx={{ alignItems: "center", gap: "6px",whiteSpace:"nowrap" }}>
