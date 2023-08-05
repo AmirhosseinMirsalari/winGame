@@ -10,7 +10,7 @@ import ProductPlaceholder from "components/Placeholders/ProductPlaceholder";
 import { useGetAllProductsQuery } from "redux/products/productsApi";
 
 const Products = () => {
-  const [selectedCategory, setSelectedCategory] = useState("audio & video game");
+  const [selectedCategory, setSelectedCategory] = useState("موبایل");
   const { ref, inView } = useInView({ triggerOnce: true });
 
   const {

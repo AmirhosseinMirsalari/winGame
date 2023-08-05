@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { StyledProducts, navStyle } from "../../styles";
 
-const categories = ["audio & video game", "دوربین عکاسی", "هدفون"];
+const categories = ["موبایل", "واقعیت مجازی", "هدفون"];
 
 interface Props {
   selectedCategory: string;
