@@ -21,6 +21,7 @@ export const teamTitleStyle = {
 export const ProductDetailsStyle = {
   fontSize: "14px",
   lineHeight: "1.8",
+  textAlign: "justify",
   color: (theme: any) => theme.palette.common.digitaBlack,
   marginTop: "20px",
   "& .paragraph": {
@@ -138,7 +139,7 @@ export const linkStyle = {
   fontFamily: "iranyekan",
   cursor: "pointer",
   "&:hover": {
-    color: "#F03637",
+    color: "white",
   },
 };
 

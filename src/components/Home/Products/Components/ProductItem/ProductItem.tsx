@@ -145,7 +145,6 @@ const ProductItem = ({ product, listView }: Props) => {
           {/* <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div> */}
           <Link href={`/product/${_id}`}>
             <CardMedia
-              component="img"
               image={image}
               alt="green iguana"
               sx={{
@@ -360,7 +359,7 @@ const ProductItem = ({ product, listView }: Props) => {
               </Box>
             )}
             <Box component="span" sx={{ color: "red", fontWeight: "bold" }}>
-              {`$${price}`}
+              {`${price} تومان`}
             </Box>
           </Typography>
           {listView && (

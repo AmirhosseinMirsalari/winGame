@@ -5,7 +5,14 @@ const Description = ({ description }: { description: string }) => {
   const contentState = convertFromRaw(JSON.parse(description));
   const editorState = EditorState.createWithContent(contentState);
   return (
-    <Box sx={{ fontFamily: "iranyekan", color: "common.digitaBlack" }}>
+    <Box
+      sx={{
+        fontFamily: "iranyekan",
+        color: "common.digitaBlack",
+        textAlign: "justify",
+        lineHeight: "50px"
+      }}
+    >
       <Editor editorState={editorState} readOnly onChange={() => {}} />
     </Box>
   );
