@@ -7,9 +7,12 @@ import "swiper/css/pagination";
 import SwiperCore, { Autoplay } from "swiper";
 import { ShopNowBtn, SlideItem, Container } from "./styles";
 import { headerData } from "./data";
+import { useRouter } from "next/router";
 
 const Header = () => {
   SwiperCore.use([Autoplay]);
+  const router = useRouter()
+
   return (
     <Container>
       <Swiper
@@ -33,7 +36,7 @@ const Header = () => {
                     <div className="header">
                       <p className="header-subtitle">{item.subTitle}</p>
                       {item.desc}
-                      <ShopNowBtn variant="contained">
+                      <ShopNowBtn onClick={()=>router.push("/shop")} variant="contained">
                         {item.btnText}
                       </ShopNowBtn>
                     </div>
