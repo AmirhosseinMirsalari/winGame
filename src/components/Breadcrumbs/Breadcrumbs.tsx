@@ -15,7 +15,7 @@ interface Props {
 function Breadcrumbs({ title, lastPath, category = "" }: Props) {
   const Location = useRouter();
   let pathnames = Location.asPath.split("/").filter((x) => x);
-  let categoryRoute = pathnames.includes("product") ? "فروشگاه" : "بلاگ";
+  let categoryRoute = pathnames.includes("product") ? "shop" : "بلاگ";
   if (category) {
     pathnames.splice(pathnames.length - 1, 0, category);
   }
