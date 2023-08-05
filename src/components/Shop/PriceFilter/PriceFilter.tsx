@@ -8,7 +8,7 @@ interface Props {
 }
 function PriceFilter({ drawer }: Props) {
   const router = useRouter()
-  const [value, setValue] = useState<number[]>([10, 1000])
+  const [value, setValue] = useState<number[]>([100000, 10000000])
   
   useEffect(() => {
     const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]) || ""
@@ -18,7 +18,7 @@ function PriceFilter({ drawer }: Props) {
       setValue([min, max])
     }
     if (router.asPath=="/shop") {
-      setValue([10, 1000])
+      setValue([100000, 10000000])
     }
   }, [router.asPath])
 
@@ -51,9 +51,9 @@ function PriceFilter({ drawer }: Props) {
         <PriceSlider
           getAriaLabel={() => "price range"}
           value={value}
-          min={0}
-          step={10}
-          max={1000}
+          min={100000}
+          step={100000}
+          max={10000000}
           onChange={handleChange}
         />
       </Box>
@@ -64,7 +64,7 @@ function PriceFilter({ drawer }: Props) {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="body2" color="primary">{`بازه قیمت : $${value[0]} — $${value[1]}`}</Typography>
+        <Typography variant="body2" color="primary">{`بازه قیمت : ${value[0]} — ${value[1]}`}</Typography>
         <Button variant="contained" sx={{ paddingY: "4px",borderRadius:"10px" }} onClick={addPriceQueryParams}>
           فیلتر
         </Button>
