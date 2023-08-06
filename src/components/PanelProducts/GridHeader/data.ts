@@ -1,26 +1,14 @@
 export const blogCategories = [
   {
     id: "1",
-    name: "information",
+    name: "اخبار تکنولوژی",
   },
   {
     id: "2",
-    name: "comunication",
+    name: "بازی کامپیوتری",
   },
   {
     id: "3",
-    name: "medical",
-  },
-  {
-    id: "4",
-    name: "enviromental",
-  },
-  {
-    id: "5",
-    name: "transportation",
-  },
-  {
-    id: "6",
-    name: "energy & power",
+    name: "نقد و بررسی محصولات",
   },
 ];
