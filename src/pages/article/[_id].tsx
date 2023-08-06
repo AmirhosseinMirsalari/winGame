@@ -118,7 +118,7 @@ function Article() {
               <Typography color={"#f03637"} mb={"20px"}>
                 در خدمت شما هستیم با یکی دیگر از مقالات آموزشی وین گیم! با ما همراه باشید
               </Typography>
-              <Box>
+              <Box sx={{textAlign:"justify",lineHeight:"30px"}}>
                 <Editor
                   editorState={editorState}
                   readOnly
