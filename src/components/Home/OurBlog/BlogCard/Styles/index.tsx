@@ -17,4 +17,5 @@ export const iconStyle = {
   fontSize: "1rem",
   marginRight: "5px",
   color: "#777777",
+  marginLeft: "5px",
 };

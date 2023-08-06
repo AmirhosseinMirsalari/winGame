@@ -39,7 +39,12 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
         textTransform={"capitalize"}
         fontWeight={600}
         mb={2}
-        sx={{ fontSize: { xs: "24px", sm: "32px", md: "40px" } }}
+        sx={{
+          fontSize: { xs: "16px", sm: "24px", md: "40px" },
+          lineHeight: "1.5",
+          marginRight: "10px",
+          marginTop: "10px",
+        }}
       >
         {title}
       </Typography>
@@ -96,7 +101,11 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
           return isLast ? (
             <Typography
               key={index}
-              sx={{ color: "#fff", textTransform: "capitalize" }}
+              sx={{
+                color: "#fff",
+                textTransform: "capitalize",
+                marginRight: "10px",
+              }}
             >
               {`${lastPath ? lastPath : name}`}
             </Typography>
