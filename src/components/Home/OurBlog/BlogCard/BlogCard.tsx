@@ -5,12 +5,14 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Card, iconStyle, textStyle } from "./Styles";
 import { IArticle } from "types/article";
 import Link from "next/link";
+import { getReadableDate } from "utils/getReadableDate";
 
 interface Props {
   item: IArticle;
 }
 
 function BlogCard({ item }: Props) {
+  
   return (
     <Card>
       <Box>
@@ -30,9 +32,9 @@ function BlogCard({ item }: Props) {
                 <PermIdentityIcon sx={iconStyle} />
                 <Typography sx={textStyle}>{item.writer}</Typography>
               </Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", alignItems: "center",marginRight:"12px" }}>
                 <AccessTimeIcon sx={iconStyle} />
-                <Typography sx={textStyle}>{item.createdAt}</Typography>
+                <Typography sx={textStyle}>{getReadableDate(item.createdAt || "")}</Typography>
               </Box>
             </Box>
           </Grid>
@@ -40,8 +42,9 @@ function BlogCard({ item }: Props) {
             <Typography
               variant="h2"
               sx={{
-                lineHeight: "1.3",
+                lineHeight: "1.5",
                 fontSize: "20px",
+                textAlign:"justify",
                 fontWeight: 500,
                 a: {
                   color: "#333333",
