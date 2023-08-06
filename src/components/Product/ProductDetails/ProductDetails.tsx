@@ -20,11 +20,7 @@ import {
   productButtonStyles,
   productIconStyles,
 } from "../styles";
-import {
-  Favorite,
-  FavoriteBorder,
-  Shuffle,
-} from "@mui/icons-material";
+import { Favorite, FavoriteBorder, Shuffle } from "@mui/icons-material";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { IProduct } from "types/product";
 import { useAppSelector } from "redux/store";
@@ -36,7 +32,7 @@ import {
 import WishModal from "components/Home/Products/Components/Modals/WishModal/WishModal";
 import { useGetReviewsQuery } from "redux/reviews/reviewsApi";
 import { isInList } from "utils/isInList";
-import {  useGetAllCartItemQuery } from "redux/cart/cartApi";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { QuantityInput } from "components/Cart";
 import { useDispatch } from "react-redux";
 import { useAddToCart } from "hooks/useAddToCart";
@@ -101,9 +97,8 @@ const ProductDetails = ({ product }: Props) => {
     colors,
     shortDescription,
     gallery,
-    category
+    category,
   } = product;
-  
 
   const isCompared = isInList(compareList, _id!);
 
@@ -138,6 +133,9 @@ const ProductDetails = ({ product }: Props) => {
       thumbnail: item.image,
     };
   });
+
+  console.log(colors.length);
+  
 
   return (
     <Box my={5}>
@@ -178,7 +176,8 @@ const ProductDetails = ({ product }: Props) => {
               {shortDescription}
             </Typography>
 
-            <ColorPicker colors={colors} />
+            {colors.length > 0 && <ColorPicker colors={colors} />}
+
             <Box>
               <Box sx={CartButtonsStyle}>
                 {!inCart && (
@@ -265,7 +264,12 @@ const ProductDetails = ({ product }: Props) => {
               <Typography component="span" className="span">
                 دسته بندی :
               </Typography>
-              <Button onClick={()=>location.push(`/shop?category=%2F${category}`)} sx={linkStyle}>{category}</Button>
+              <Button
+                onClick={() => location.push(`/shop?category=%2F${category}`)}
+                sx={linkStyle}
+              >
+                {category}
+              </Button>
             </Box>
           </Box>
         </Grid>
