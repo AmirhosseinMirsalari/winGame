@@ -41,7 +41,6 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
             color="secondary"
           />
           <a
-            href={`/blog/${id}/writer/${writer.replace(/\s+/g, "-")}`}
             underline="none"
             color="secondary"
             sx={{
@@ -73,7 +72,6 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
           &nbsp;
           <FolderOutlinedIcon style={{ fontSize: "13px" }} color="secondary" />
           <a
-            href={`/blog/${id}/category/${category.replace(/\s+/g, "-")}`}
             underline="none"
             color="secondary"
             sx={{

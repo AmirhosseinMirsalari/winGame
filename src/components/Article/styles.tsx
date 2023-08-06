@@ -14,6 +14,7 @@ export const articleTitleStyles = {
   fontWeight: "400",
   color: "#333",
   marginBottom: "15px",
+  lineHeight: "50px",
 };
 
 export const inputStyles = {
