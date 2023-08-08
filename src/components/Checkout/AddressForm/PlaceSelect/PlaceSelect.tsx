@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import { Box, Fade } from "@mui/material";
 import { InputWrapper } from "../../styles";
-import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
+import { ICountry, IState, ICity } from 'country-state-city'
 
 type Props = {
   state: ICity | ICountry | IState;

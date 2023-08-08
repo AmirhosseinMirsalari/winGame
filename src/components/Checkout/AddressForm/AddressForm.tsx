@@ -5,7 +5,7 @@ import InputLabel from "./InputLabel/InputLabel";
 import PlaceSelect from "./PlaceSelect/PlaceSelect";
 import { IAddress } from "types/user";
 import { City, Country, State } from "country-state-city";
-import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
+import { ICountry, IState, ICity } from 'country-state-city'
 const initialCountryState = {
   isoCode: "",
   name: "",
