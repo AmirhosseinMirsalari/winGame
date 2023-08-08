@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import { UpdateCart } from "pages/Main/Cart/Cart";
 import { ICartItem } from "types/cart";
 
 export enum UpdateType {
@@ -11,7 +10,7 @@ export enum UpdateType {
 type Props = {
   item?: ICartItem;
   type?: UpdateType;
-  setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>;
+  setCartUpdated: React.Dispatch<React.SetStateAction<any | null>>;
 };
 
 const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
@@ -42,7 +41,7 @@ const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
           color: "#777",
         }}
       >
-        {type === UpdateType.Remove ? `${`“${item?.productId}“ removed.`}` : "Cart updated."}
+        {type === UpdateType.Remove ? `${` حذف شد“${item?.productId}“`}` : "سبد خرید آپدیت شد"}
       </Typography>
       {type === UpdateType.Remove && <Box sx={{ marginLeft: "auto" }}></Box>}
     </Box>
