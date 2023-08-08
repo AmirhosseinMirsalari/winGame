@@ -18,7 +18,7 @@ function ContactUs() {
         <Grid container spacing={3} paddingY={6}>
           <Grid item xs={12} md={6}>
             <Map width="800" height="400" center={DEFAULT_CENTER} zoom={15}>
-              {({ TileLayer, Marker, Popup }) => (
+              {({ TileLayer, Marker, Popup }:any) => (
                 <>
                   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                   <Marker position={DEFAULT_CENTER}>

@@ -8,10 +8,10 @@ import { useRouter } from "next/router";
 import { IProduct } from "types/product";
 
 interface Props {
-  setOpenCompareModal: Dispatch<SetStateAction<boolean>>;
-  id: string;
-  product: IProduct;
-  setOpenCart: SetStateAction<boolean>;
+  setOpenCompareModal?: any;
+  id?: string;
+  product?: IProduct;
+  setOpenCart?: any;
 }
 
 function Compare({ setOpenCompareModal, id, product, setOpenCart }: Props) {

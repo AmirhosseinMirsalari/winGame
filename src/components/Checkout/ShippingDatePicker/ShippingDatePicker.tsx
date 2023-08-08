@@ -13,7 +13,7 @@ interface Props {
 const ShippingDatePicker = ({ date, setDate }: Props) => {
   const handleChange = (d: DatepickerEvent) => {
     const [startValue, endValue, rangeDates] = d;
-    setDate((prev) => ({ ...prev, endValue, startValue, rangeDates }));
+    setDate((prev:any) => ({ ...prev, endValue, startValue, rangeDates }));
   };
 
   return (

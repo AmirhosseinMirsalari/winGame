@@ -24,10 +24,10 @@ const compareIndexes = [
   { key: "رنگ ها", value: "colors" },
 ];
 interface Props {
-  products: IProduct[];
-  id: string;
-  product: IProduct;
-  setOpenCart: SetStateAction<boolean>;
+  products: any[];
+  id: any;
+  product: any;
+  setOpenCart: any;
 }
 function ItemsTable({ products, id, product, setOpenCart }: Props) {
   const { role, user } = useAppSelector((state) => state.reducer.auth);

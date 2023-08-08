@@ -146,6 +146,7 @@ const ProductItem = ({ product, listView }: Props) => {
           {/* <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div> */}
           <Link href={`/product/${_id}`}>
             <CardMedia
+              component="img"
               image={image}
               alt="green iguana"
               sx={{
@@ -167,14 +168,20 @@ const ProductItem = ({ product, listView }: Props) => {
           <StyledIcons
             sx={{
               backgroundColor: "#fff",
-              marginTop:"37px",
-              boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.11)"
+              marginTop: "37px",
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.11)",
               // transform: "translateX(-50%)  scaleY(0)",
             }}
             className="icon-card"
           >
             <Stack direction="row">
-              <RedTooltip title={inCart ? "در سبد خرید شما موجود است" : "افزودن به سبد خرید"} placement="top">
+              <RedTooltip
+                title={
+                  inCart ? "در سبد خرید شما موجود است" : "افزودن به سبد خرید"
+                }
+                placement="top"
+              >
                 <Box sx={productIconWrapperStyles} onClick={addToCartHandler}>
                   {cartIsLoading && <DotSpinner />}
                   {!cartIsLoading && (
@@ -309,7 +316,12 @@ const ProductItem = ({ product, listView }: Props) => {
           }}
         >
           <div>
-            <CompareModal id={_id} product={product} setOpenCart={setOpenCart} setOpenCompareModal={setOpenCompareModal} />
+            <CompareModal
+              id={_id!}
+              product={product}
+              setOpenCart={setOpenCart}
+              setOpenCompareModal={setOpenCompareModal}
+            />
           </div>
         </Modal>
         <CardContent>

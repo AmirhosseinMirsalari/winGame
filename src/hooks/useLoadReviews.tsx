@@ -16,7 +16,7 @@ export function useLoadReviews(reviews: IReviews[] | []) {
   };
 
   useEffect(() => {
-    const { hash } = router.query;
+    const { hash }:any = router.query;
     if (!hash || !hash.includes("#review")) {
       return;
     }

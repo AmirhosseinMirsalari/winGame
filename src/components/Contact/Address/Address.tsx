@@ -18,7 +18,7 @@ function Address() {
       راه های ارتباط حضوری و آنلاین 
       </Typography>
       <Grid container spacing={4}>
-        {ourAddress.map(({ id, title, subtitle1, subtitle2 }) => (
+        {ourAddress.map(({ id, title, subtitle1 }) => (
           <Grid item xs={6} md={3} key={id}>
             <Box sx={{ textAlign: "center" }}>
               <Typography
@@ -45,17 +45,7 @@ function Address() {
               >
                 {subtitle1}
               </Typography>
-              <Typography
-                component={"span"}
-                variant={"subtitle1"}
-                sx={{
-                  textTransform: "capitalize",
-                  fontWeight: 400,
-                  color: "#777777",
-                }}
-              >
-                {subtitle2}
-              </Typography>
+              
             </Box>
           </Grid>
         ))}

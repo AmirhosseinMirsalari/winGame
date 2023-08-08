@@ -16,7 +16,7 @@ function Blog() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const router = useRouter();
-  const categoryQueryParams = router.query.category;
+  const categoryQueryParams:any = router.query.category;
 
   let queries: any = `page=${currentPage}&limit=${articlesPerPage} &search=${searchValue}`;
 

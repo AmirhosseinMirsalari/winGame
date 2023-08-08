@@ -25,7 +25,7 @@ import OpenLoginContext from "context/openLogin";
 function Article() {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [reviewDescription, setReviewDescription] = useState("");
-  const router = useRouter();
+  const router:any = useRouter();
   
   const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
 

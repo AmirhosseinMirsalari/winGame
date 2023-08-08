@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 const Product = () => {
-  const router = useRouter();
+  const router:any = useRouter();
 
 
   const { data: productData, isLoading: productLoading, isError: productError } = useGetProductQuery(router.query._id);

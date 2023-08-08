@@ -21,9 +21,9 @@ const initialTabsState = {
   delivery: false,
 };
 function Tabs({ product }: Props) {
-  const router = useRouter()
+  const router:any = useRouter()
   const [openTabs, setOpenTabs] = useState(initialTabsState);
-  const searchParams = new URLSearchParams(router.query);
+  const searchParams:any = new URLSearchParams(router.query);
   const { data: reviewsData } = useGetReviewsQuery({
     path: "products",
     id: product._id!,

@@ -40,8 +40,7 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
             style={{ fontSize: "1rem" }}
             color="secondary"
           />
-          <a
-            underline="none"
+          <Box
             color="secondary"
             sx={{
               fontSize: "12px",
@@ -52,7 +51,7 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
             }}
           >
             {writer} -
-          </a>
+          </Box>
         </Box>
       </Item>
       {/* Release createdAt article */}
@@ -71,8 +70,7 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
         <Box display="flex">
           &nbsp;
           <FolderOutlinedIcon style={{ fontSize: "13px" }} color="secondary" />
-          <a
-            underline="none"
+          <Box
             color="secondary"
             sx={{
               fontSize: "12px",
@@ -84,7 +82,7 @@ const CardDescription = ({ id, writer, createdAt, category }: props) => {
             }}
           >
             &nbsp;{category}
-          </a>
+          </Box>
         </Box>
       </Item>
     </Box>
