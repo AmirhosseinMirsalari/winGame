@@ -1,7 +1,34 @@
-import { ThemeOptions } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import { Shadows } from "@mui/material/styles/shadows";
 
-const lightThemeOptions: ThemeOptions = {
+declare module "@mui/material/styles/createPalette" {
+  interface CommonColors {
+    digitaBlack: string;
+    digitaBlack1: string;
+    digitaRed: string;
+    digitaDarkRed: string;
+    digitaGrey: string;
+    digitaGrey1: string;
+    digitaGrey2: string;
+    digitaGrey3: string;
+    digitaGrey4: string;
+    digitaGrey5: string;
+    digitaGrey6: string;
+    digitaGrey7: string;
+    digitaGrey8: string;
+    digitaGrey9: string;
+    panelGrey: string;
+    panelBorderGrey: string;
+    panelHoverGrey: string;
+    panelHoverDarkGrey: string;
+    PanelDarkRed: string;
+    panelActiveRed: string;
+    digitaWhite: string;
+    digitaYellow: string;
+  }
+}
+
+export const theme = createTheme({
   palette: {
     common: {
       digitaBlack: "#333333",
@@ -66,6 +93,4 @@ const lightThemeOptions: ThemeOptions = {
     },
   },
   shadows: Array(25).fill("none") as Shadows,
-};
-
-export default lightThemeOptions;
+});

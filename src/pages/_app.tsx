@@ -4,7 +4,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import NextNProgress from "nextjs-progressbar";
 import createEmotionCache from "../../styles/theme/createEmotionCache";
-import lightThemeOptions from "../../styles/theme";
+import { theme } from "../../styles/theme";
 import "../../styles/globals.css";
 import Footer from "../layouts/MainLayout/Footer/Footer";
 import { Provider } from "react-redux";
@@ -23,7 +23,6 @@ interface MyAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache();
 
-const theme = createTheme(lightThemeOptions);
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
