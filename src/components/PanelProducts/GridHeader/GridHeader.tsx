@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { PTextField, PFormControl } from "styles/panel";
 import { blogCategories } from "./data";
-import { useLocation } from "react-router-dom";
 import { productCategories } from "components/Shop/data";
+import { useRouter } from "next/router";
+import { PFormControl, PTextField } from "../../../../styles/panel";
 
 interface Props {
   selectedSorting?: string;
@@ -21,7 +21,7 @@ function GridHeader({
   searchValue,
   setSearchValue,
 }: Props) {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
   const categories = pathname.includes("articles") ? blogCategories : productCategories;
   return (
     <Box

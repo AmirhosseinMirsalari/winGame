@@ -1,20 +1,20 @@
 import { Box } from "@mui/material";
-import { PButton, PTitle } from "styles/panel";
 import { Add } from "@mui/icons-material";
 import { ContentWrapper } from "../styles";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+import { PButton, PTitle } from "../../../../styles/panel";
 
 interface T {
   title: string;
 }
 
 const ContentHeader = ({ title }: T) => {
-  const navigate = useNavigate();
+  const navigate = useRouter();
   return (
     <ContentWrapper>
       <PTitle>{title}</PTitle>
       <Box sx={{ display: "flex", gap: 1 }}>
-        <PButton variant="contained" onClick={() => navigate(`/panel/${title.toLowerCase()}/add`)}>
+        <PButton variant="contained" onClick={() => navigate.push(`/panel/${title.toLowerCase()}/add`)}>
           <Add />
           create new
         </PButton>

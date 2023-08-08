@@ -3,7 +3,7 @@ import { Box, CardContent, Button, Card, CardMedia, Typography, Modal } from "@m
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { cardWrapper, titleWrapper, titleStyle, deleteBtn, editBtn, cartModal } from "../styles";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 type T = {
   id: string;
@@ -27,10 +27,13 @@ const Product = ({ id, title, price, image, onRemove }: T) => {
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          <Button variant="contained" sx={editBtn} component={Link} to={`/panel/products/edit/${id}`}>
+          <Link href={`/panel/products/edit/${id}`}>
+          <Button variant="contained" sx={editBtn} >
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
+          </Link>
+          
           <Button variant="contained" sx={deleteBtn} onClick={() => setOpenDelete(true)}>
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
