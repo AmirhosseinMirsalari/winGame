@@ -51,7 +51,7 @@ function ShopCartItem({ id, name, price, quantity, image, productId }: Props) {
         </Box>
       </ListItemIcon>
 
-      <ListItemText sx={{ marginLeft: "16px", marginLeft: "40px" }}>
+      <ListItemText sx={{ marginLeft: "16px", }}>
         <Link href={`/product/${productId}`}>
           <Typography
             variant="body2"
