@@ -99,7 +99,7 @@ function Checkout() {
     try {
       await updateUser({
         id: user?._id!,
-        path: role,
+        path: role!,
         user: {
           addresses: addressArr,
         },
@@ -149,7 +149,7 @@ function Checkout() {
       coupon: couponValue,
     };
     try {
-      const res = await addOrder({ path: role, order }).unwrap();
+      const res = await addOrder({ path: role!, order }).unwrap();
       navigate.push("/order-confirm");
     } catch (err: any) {
       errorMessage(err?.data.message);
