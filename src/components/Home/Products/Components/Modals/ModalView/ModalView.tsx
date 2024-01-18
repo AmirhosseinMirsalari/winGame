@@ -157,8 +157,8 @@ const ModalView = ({
               label="Age"
               onChange={handleChange}
             >
-              {colors.map((color) => (
-                <MenuItem value={color}>{color}</MenuItem>
+              {colors.map((color,index) => (
+                <MenuItem key={index} value={color}>{color}</MenuItem>
               ))}
             </Select>
             <FormHelperText></FormHelperText>

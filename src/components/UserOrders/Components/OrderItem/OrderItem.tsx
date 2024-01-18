@@ -75,8 +75,8 @@ const OrderItem = ({ id, date, status, products }: T) => {
         </Box>
       </Box>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px", mt: 2, img: { aspectRatio: "1" } }}>
-        {products?.map(({ productId }) => (
-          <img src={productId?.image} alt={productId?.title} className="orderImg" />
+        {products?.map(({ productId,_id }) => (
+          <img key={_id} src={productId?.image} alt={productId?.title} className="orderImg" />
         ))}
       </Box>
 

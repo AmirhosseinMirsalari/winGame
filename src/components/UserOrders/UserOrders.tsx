@@ -83,6 +83,7 @@ const UserOrders = () => {
                   date={date}
                   status={status}
                   products={products}
+                  key={_id}
                 />
               ))}
             </Box>

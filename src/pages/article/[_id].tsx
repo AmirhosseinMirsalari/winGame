@@ -126,6 +126,7 @@ function Article({ articlesDataRecent, getArticle, reviewsData }: any) {
                         rating={review.rating!}
                         description={review.description}
                         createdAt={review.createdAt!}
+                        key={review._id}
                       />
                     ))
                 ) : (

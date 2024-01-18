@@ -147,10 +147,13 @@ function Shop({ allproductsData }: any) {
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {products
-                ? products.map((product: any) => {
+                ? products.map((product: any, index: number) => {
                     if (products.length === 0) {
                       return (
-                        <Box sx={{ textAlign: "center", margin: "40px auto" }}>
+                        <Box
+                          key={index}
+                          sx={{ textAlign: "center", margin: "40px auto" }}
+                        >
                           <Typography
                             variant="h5"
                             sx={{ color: "common.digitaBlack" }}
