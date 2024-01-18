@@ -15,10 +15,19 @@ interface Props {
 function Breadcrumbs({ title, lastPath, category = "" }: Props) {
   const Location = useRouter();
   let pathnames = Location.asPath.split("/").filter((x) => x);
-  let categoryRoute = pathnames.includes("product") ? "shop" : "بلاگ";
+  let categoryRoute =
+    pathnames.includes("product") ||
+    pathnames.includes("shop?category=") ||
+    pathnames[0].includes("shop")
+      ? "shop"
+      : "blog";
   if (category) {
     pathnames.splice(pathnames.length - 1, 0, category);
   }
+  const urlParams = new URLSearchParams(window.location.search) || "";
+  const categoryParam = urlParams.get("category");
+  const categoryValue = categoryParam && categoryParam.substring(1);
+  console.log("path", pathnames[0].includes("shop"));
 
   return (
     <Box
@@ -72,7 +81,20 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
           const isLast = index === pathnames.length - 1;
           let name = path.replace(/-/g, " ");
 
-          if (name.includes("product") || Location.asPath.includes("shop")) {
+          console.log(Location.asPath);
+
+          if (name === category) {
+            name = category;
+            route = `/${categoryRoute}?category=/${category.replace(
+              "&",
+              "%26"
+            )}`;
+          }
+          if (categoryValue && Location.asPath !== "/shop") {
+            name = decodeURI(categoryValue);
+            route = `/${categoryRoute}?category=/${categoryValue}`;
+          }
+          if (name.includes("product") || Location.asPath === "/shop") {
             name = "فروشگاه";
             route = "/shop";
           }
@@ -84,7 +106,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             name = "سبد خرید";
             route = "/cart";
           }
-          if (name === "article" || name === "blog") {
+          if (name.includes("article") || name.includes("blog")) {
             name = "بلاگ";
             route = "/blog";
           }
@@ -92,12 +114,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             name = "تماس با ما";
             route = "/contact-us";
           }
-          if (name === category) {
-            route = `/${categoryRoute}?category=/${category.replace(
-              "&",
-              "%26"
-            )}`;
-          }
+
           return isLast ? (
             <Typography
               key={index}

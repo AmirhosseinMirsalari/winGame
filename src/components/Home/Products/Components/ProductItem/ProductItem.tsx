@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Box,
   Card,
@@ -42,6 +42,7 @@ import { useAddToCart } from "hooks/useAddToCart";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { numberFormat } from "utils/numberFormat";
+import OpenLoginContext from "context/openLogin";
 
 type Props = {
   product: IProduct;
@@ -88,6 +89,7 @@ const ProductItem = ({ product, listView }: Props) => {
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, _id!);
   const cartItem = cartItems.find((item) => item?.productId?._id === _id);
+  const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
 
   const { addToCartHandler, cartIsLoading } = useAddToCart(
     inCart,
@@ -110,7 +112,7 @@ const ProductItem = ({ product, listView }: Props) => {
   const wishlistHandler = async () => {
     if (!user || !role) {
       setOpenView(false);
-      router.push("/?login=open");
+      setOpenLogin(true);
       return;
     }
     try {

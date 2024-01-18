@@ -45,7 +45,7 @@ function FiltersDrawer({
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
     router.push(`/shop?category=/${event.target.value}`, undefined, {
-      shallow: true,
+      shallow: false,
     });
   };
 

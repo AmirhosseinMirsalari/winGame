@@ -12,7 +12,7 @@ function PriceFilter({ drawer }: Props) {
   
   useEffect(() => {
     const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]) || ""
-    const priceRangeQueryParam = searchParams?.get('priceRange')
+    const priceRangeQueryParam = searchParams?.get('price')
     if (priceRangeQueryParam) {
       const [min, max] = priceRangeQueryParam.split('/').map((value) => Number(value.split('=')[1]))
       setValue([min, max])
@@ -27,7 +27,7 @@ function PriceFilter({ drawer }: Props) {
   }
 
   const addPriceQueryParams = () => {
-    router.push(`/shop?priceRange=min=${value[0]}/max=${value[1]}`, undefined, { shallow: true })
+    router.push(`/shop?price=min=${value[0]}/max=${value[1]}`, undefined, { shallow: false })
   }
   return (
     <Box

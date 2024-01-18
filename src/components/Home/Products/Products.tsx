@@ -1,24 +1,20 @@
-import { useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
-import ProductHeader from "./Components/Header/ProductHeader";
-import ProductItem from "./Components/ProductItem/ProductItem";
-import BasicBtn from "./Components/Button/BasicBtn";
-import ProductCards from "./Components/ProductCards/ProductCards";
-import { useInView } from "react-intersection-observer";
-import { subMainContainer } from "./styles";
 import ProductPlaceholder from "components/Placeholders/ProductPlaceholder";
-import { useGetAllProductsQuery } from "redux/products/productsApi";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
+import BasicBtn from "./Components/Button/BasicBtn";
+import ProductHeader from "./Components/Header/ProductHeader";
+import ProductCards from "./Components/ProductCards/ProductCards";
+import ProductItem from "./Components/ProductItem/ProductItem";
+import { subMainContainer } from "./styles";
 
-const Products = () => {
+const Products = ({ products }: any) => {
   const [selectedCategory, setSelectedCategory] = useState("موبایل");
   const { ref, inView } = useInView({ triggerOnce: true });
 
-  const {
-    data: productsData,
-    isLoading,
-    isError,
-  } = useGetAllProductsQuery(`category=${selectedCategory.replaceAll("&", "%26")}`);
-  const products = productsData?.data ?? [];
+  const productsData = products.productsData ?? [];
+
+  console.log(products);
 
   return (
     <Container
@@ -32,16 +28,25 @@ const Products = () => {
       }}
       ref={ref}
     >
-      <Container maxWidth={"lg"} sx={subMainContainer} className={inView ? "slideInFromBottom" : ""}>
-        <ProductHeader selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <Container
+        maxWidth={"lg"}
+        sx={subMainContainer}
+        className={inView ? "slideInFromBottom" : ""}
+      >
+        <ProductHeader
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            {!isLoading && !isError && products.length > 0
-              ? products.map((product) => (
-                  <Grid item xs={12} sm={4} md={3} key={product?._id}>
-                    <ProductItem product={product} listView={false} />
-                  </Grid>
-                ))
+            {!products.isLoading && !products.isError && productsData.length > 0
+              ? productsData
+                  .filter((p: any) => p.category === selectedCategory)
+                  .map((product: any) => (
+                    <Grid item xs={12} sm={4} md={3} key={product?._id}>
+                      <ProductItem product={product} listView={false} />
+                    </Grid>
+                  ))
               : Array(8)
                   .fill(null)
                   .map((item, index) => (

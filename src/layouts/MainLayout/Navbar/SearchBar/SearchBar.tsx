@@ -60,7 +60,10 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   };
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
-      <Box sx={{ position: "relative", width: "100%", height: "100%" }} ref={searchRef}>
+      <Box
+        sx={{ position: "relative", width: "100%", height: "100%" }}
+        ref={searchRef}
+      >
         <Box sx={{ display: "flex", height: "100%" }}>
           <InputBase
             placeholder="جستجو کنید"
@@ -69,7 +72,14 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             value={searchValue}
             onFocus={() => setCloseDropdown(false)}
           />
-          <Box sx={{ display: "flex", padding: "10px" }} onClick={() => navigate.push(`/shop?${queries}`)}>
+          <Box
+            sx={{ display: "flex", padding: "10px" }}
+            onClick={() => {
+              products.length > 0
+                ? navigate.push(`/shop?${queries}`)
+                : navigate.push(`/shop`);
+            }}
+          >
             <SearchOutlined
               sx={{
                 color: "common.digitaGrey",
@@ -80,7 +90,12 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             />
           </Box>
         </Box>
-        <Box sx={searchBarDropdown} className={searchValue.trim().length === 0 || closeDropdown ? "hidden" : ""}>
+        <Box
+          sx={searchBarDropdown}
+          className={
+            searchValue.trim().length === 0 || closeDropdown ? "hidden" : ""
+          }
+        >
           {isLoading ? (
             <Box>
               <PStack>
@@ -88,7 +103,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
               </PStack>
             </Box>
           ) : products?.length === 0 ? (
-            <Box sx={{ textTransform: "capitalize" }}>هیچ نتیجه ای یافت نشد</Box>
+            <Box sx={{ fontFamily: "iranyekan" }}>هیچ نتیجه ای یافت نشد</Box>
           ) : (
             products?.slice(0, 6).map(({ _id, title }) => (
               <Box key={_id} onClick={suggestionClickHandler(title)}>
@@ -98,7 +113,12 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
           )}
         </Box>
       </Box>
-      <Divider orientation="vertical" sx={{ height: "50%", margin: "auto" }} variant="middle" flexItem />
+      <Divider
+        orientation="vertical"
+        sx={{ height: "50%", margin: "auto" }}
+        variant="middle"
+        flexItem
+      />
       <Box sx={{ marginRight: "40px", marginLeft: "20px" }}>
         <FormControl sx={{ width: "200px" }}>
           <Select

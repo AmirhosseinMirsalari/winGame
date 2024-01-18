@@ -1,52 +1,51 @@
-import { useState } from "react";
+import { Favorite, FavoriteBorder, Shuffle } from "@mui/icons-material";
 import {
-  Grid,
+  Box,
   Button,
   Divider,
-  Box,
+  Grid,
+  Modal,
   Rating,
   Typography,
-  Modal,
 } from "@mui/material";
-import {
-  CartButtonsStyle,
-  ProductDetailsStyle,
-  productTitle,
-  starRating,
-  productMetaStyle,
-  linkStyle,
-  filledPrice,
-  starLink,
-  productButtonStyles,
-  productIconStyles,
-} from "../styles";
-import { Favorite, FavoriteBorder, Shuffle } from "@mui/icons-material";
-import ColorPicker from "./ColorPicker/ColorPicker";
-import { IProduct } from "types/product";
+import { QuantityInput } from "components/Cart";
+import CompareModal from "components/Compare/Compare";
+import WishModal from "components/Home/Products/Components/Modals/WishModal/WishModal";
+import { useAddToCart } from "hooks/useAddToCart";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import ImageGallery from "react-image-gallery";
+import { useDispatch } from "react-redux";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
+import { addToCompareList } from "redux/compare/compareSlice";
 import { useAppSelector } from "redux/store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
   useGetWishlistQuery,
 } from "redux/wishlist/wishlistApi";
-import WishModal from "components/Home/Products/Components/Modals/WishModal/WishModal";
-import { useGetReviewsQuery } from "redux/reviews/reviewsApi";
+import { IProduct } from "types/product";
 import { isInList } from "utils/isInList";
-import { useGetAllCartItemQuery } from "redux/cart/cartApi";
-import { QuantityInput } from "components/Cart";
-import { useDispatch } from "react-redux";
-import { useAddToCart } from "hooks/useAddToCart";
-import { addToCompareList } from "redux/compare/compareSlice";
-import CompareModal from "components/Compare/Compare";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import ImageGallery from "react-image-gallery";
 import { numberFormat } from "utils/numberFormat";
+import {
+  CartButtonsStyle,
+  ProductDetailsStyle,
+  filledPrice,
+  linkStyle,
+  productButtonStyles,
+  productIconStyles,
+  productMetaStyle,
+  productTitle,
+  starLink,
+  starRating,
+} from "../styles";
+import ColorPicker from "./ColorPicker/ColorPicker";
 
 interface Props {
   product: IProduct;
 }
-const ProductDetails = ({ product }: Props) => {
+const ProductDetails = ({ product, reviewsData }: any) => {
   const { role, user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
   const { compareList } = useAppSelector((state) => state.reducer.compare);
@@ -59,11 +58,7 @@ const ProductDetails = ({ product }: Props) => {
   const location = useRouter();
   const dispatch = useDispatch();
 
-  const { data: reviewsData } = useGetReviewsQuery({
-    path: "products",
-    id: product?._id!,
-  });
-  const reviewsLength = reviewsData?.data.length ?? 0;
+  const reviewsLength = reviewsData?.reviews.length ?? 0;
 
   const { data: cartData } = useGetAllCartItemQuery(undefined, {
     skip: !!!user,
@@ -127,15 +122,12 @@ const ProductDetails = ({ product }: Props) => {
     dispatch(addToCompareList(product));
     setOpenCompareModal(true);
   };
-  const images = gallery.map((item) => {
+  const images = gallery.map((item: any) => {
     return {
       original: item.image,
       thumbnail: item.image,
     };
   });
-
-  console.log(colors.length);
-  
 
   return (
     <Box my={5}>

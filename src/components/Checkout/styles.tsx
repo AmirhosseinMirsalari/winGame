@@ -81,7 +81,7 @@ export const InputWrapper = styled(Box)(({ theme }) => ({
     border: `1px solid ${theme.palette.common.digitaGrey2}`,
     width: "100%",
     borderRadius: "4px",
-    fontFamily: "jost",
+    fontFamily: "iranyekan",
     boxSizing: "border-box",
     backgroundColor: theme.palette.common.digitaGrey5,
     "&:hover": {
@@ -100,7 +100,7 @@ export const InputWrapper = styled(Box)(({ theme }) => ({
     listStyle: "none",
     boxSizing: "border-box",
     li: {
-      fontFamily: "jost",
+      fontFamily: "iranyekan",
       padding: "5px 10px",
       cursor: "pointer",
       transition: "all 100ms ease-in",

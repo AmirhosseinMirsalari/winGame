@@ -1,29 +1,23 @@
 import { Box } from "@mui/material";
+import { useInView } from "react-intersection-observer";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Title } from "../ShopByCategories/styles";
-import { boxStyles, Container, WrapperBox } from "./styles";
-import { useInView } from "react-intersection-observer";
-import { useGetAllReviewsQuery } from "redux/reviews/reviewsApi";
 import ClientCard from "./ClientCard/ClientCard";
+import { Container, WrapperBox, boxStyles } from "./styles";
 
-function WhatClientSay() {
+function WhatClientSay({ whatClientSay }: any) {
   const { ref, inView } = useInView({ triggerOnce: true });
   SwiperCore.use([Autoplay]);
 
-  const {
-    data: reviewsData,
-    isLoading,
-    isError,
-  } = useGetAllReviewsQuery({
-    path: "products",
-    queries: "page=1 &limit=4",
-  });
-  const reviews = reviewsData?.data ?? [];
+  const reviews = whatClientSay?.whatClientSayData ?? [];
+
   return (
     <WrapperBox className={inView ? "slideInFromBottom" : ""} ref={ref}>
       <Box sx={boxStyles}>
-        <Title sx={{fontSize:"24px"}} variant="h4">مشتریان درباره ما چه می گویند؟</Title>
+        <Title sx={{ fontSize: "24px" }} variant="h4">
+          مشتریان درباره ما چه می گویند؟
+        </Title>
         <img
           className="loading"
           src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232874/digita-images/static/uej2dnhrgldg1jaztexn.png"
@@ -44,9 +38,9 @@ function WhatClientSay() {
             }}
             modules={[Navigation, Pagination]}
           >
-            {!isError &&
-              !isLoading &&
-              reviews.map((review) => {
+            {!whatClientSay.isError &&
+              !whatClientSay.isLoading &&
+              reviews.map((review: any) => {
                 return (
                   <SwiperSlide key={review._id}>
                     <ClientCard review={review} />

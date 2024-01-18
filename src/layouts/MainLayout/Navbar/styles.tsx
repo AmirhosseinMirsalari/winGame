@@ -70,7 +70,7 @@ export const ShopMenuButton = styled(Button)(({ theme }) => ({
   backgroundColor: "transparent",
   border: "1px solid white",
   textAlign: "center",
-  marginLeft:"170px",
+  marginLeft: "170px",
   borderRadius: "15px",
   color: "white !important",
   "&:hover": {
@@ -157,7 +157,7 @@ export const searchBarDropdown = {
     color: "common.digitaBlack",
     padding: "10px",
     cursor: "pointer",
-    fontFamily: "jost",
+    fontFamily: "iranyekan",
     transition: "all 200ms",
     "&:hover": {
       backgroundColor: "#0000000A",

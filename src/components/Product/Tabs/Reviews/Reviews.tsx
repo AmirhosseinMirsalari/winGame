@@ -1,21 +1,22 @@
-import { Fragment, useState } from "react";
-import { ProductContentStyle, SubmitButton } from "../../styles";
-import { PFormControl } from "../../../../../styles/panel";
 import {
-  Typography,
   Box,
-  Rating,
-  Divider,
   Button,
+  Divider,
   FormLabel,
+  Rating,
   TextField,
+  Typography,
 } from "@mui/material";
-import Review from "./Review/Review";
-import { useAppSelector } from "redux/store";
-import { useAddReviewMutation } from "redux/reviews/reviewsApi";
-import { IReviews } from "types/product";
+import OpenLoginContext from "context/openLogin";
 import { useLoadReviews } from "hooks/useLoadReviews";
 import { useRouter } from "next/router";
+import { Fragment, useContext, useState } from "react";
+import { useAddReviewMutation } from "redux/reviews/reviewsApi";
+import { useAppSelector } from "redux/store";
+import { IReviews } from "types/product";
+import { PFormControl } from "../../../../../styles/panel";
+import { ProductContentStyle, SubmitButton } from "../../styles";
+import Review from "./Review/Review";
 
 interface Props {
   reviews: IReviews[] | [];
@@ -23,6 +24,7 @@ interface Props {
 }
 const Reviews = ({ reviews, id }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
+  const { openLogin, setOpenLogin } = useContext(OpenLoginContext);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
   const { indexOfLoadedReviews, loadMoreReviewsHandler } =
@@ -31,12 +33,10 @@ const Reviews = ({ reviews, id }: Props) => {
 
   const [addReview] = useAddReviewMutation();
 
-  console.log(location.pathname);
-  
 
   const submitReviewHandler = async () => {
     if (!user) {
-      location.push("/?login=open");
+      setOpenLogin(true);
       return;
     }
     try {
@@ -96,7 +96,6 @@ const Reviews = ({ reviews, id }: Props) => {
             {indexOfLoadedReviews < reviews.length ? "بارگذاری بیشتر" : "بستن"}
           </Button>
         )}
-    
 
         <Box mb={2} mt={10}>
           <Typography
@@ -106,13 +105,13 @@ const Reviews = ({ reviews, id }: Props) => {
               fontSize: "14px",
               marginTop: "10px",
               marginBottom: "5px",
-              textAlign:"start",
+              textAlign: "start",
             }}
           >
             امتیاز شما
             <Typography
               component={"span"}
-              sx={{ color: "#f03637", marginRight : "4px" }}
+              sx={{ color: "#f03637", marginRight: "4px" }}
             >
               *
             </Typography>
@@ -150,7 +149,13 @@ const Reviews = ({ reviews, id }: Props) => {
           <PFormControl>
             <FormLabel
               color="primary"
-              sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px",textAlign:"start",marginTop:"5px" }}
+              sx={{
+                fontSize: "15px",
+                color: "#333333",
+                marginBottom: "5px",
+                textAlign: "start",
+                marginTop: "5px",
+              }}
             >
               نظر شما
               <Typography
@@ -167,7 +172,7 @@ const Reviews = ({ reviews, id }: Props) => {
                 borderRadius: "15px",
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "common.digitaGrey6",
-                  borderRadius: "15px"
+                  borderRadius: "15px",
                 },
               }}
               value={reviewDescription}

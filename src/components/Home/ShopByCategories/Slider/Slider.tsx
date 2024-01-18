@@ -1,10 +1,9 @@
+import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
 import SliderCard from "../SliderCard/SliderCard";
-import { shopByCat } from "./data";
 import { Container } from "./styles";
 
-const Slider = () => {
+const Slider = ({ shopByCat }: any) => {
   return (
     <Container>
       <div className="swiper-button-prev" />
@@ -32,13 +31,14 @@ const Slider = () => {
           },
         }}
       >
-        {shopByCat.map((item) => {
-          return (
-            <SwiperSlide key={item.id}>
-              <SliderCard key={item.id} item={item} />
-            </SwiperSlide>
-          );
-        })}
+        {shopByCat &&
+          shopByCat.map((item: any) => {
+            return (
+              <SwiperSlide key={item.id}>
+                <SliderCard key={item.id} item={item} />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </Container>
   );

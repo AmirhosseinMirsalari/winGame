@@ -37,7 +37,7 @@ export const Main = styled(Box)(({ theme }) => ({
   },
 }));
 export const PanelItem = styled(ListItem)(({ theme }) => ({
-  fontFamily: "jost",
+  fontFamily: "iranyekan",
   padding: "3px 0",
   ".link": {
     padding: "8px 10px",
@@ -131,7 +131,7 @@ export const panelToolbarStyles = {
 };
 
 export const accordionDetailStyles = {
-  fontFamily: "jost ",
+  fontFamily: "iranyekan ",
   marginLeft: "34px",
   padding: "0px 16px 16px",
   a: {

@@ -3,7 +3,7 @@ import Slider from "./Slider/Slider";
 import { boxStyles, Title, WrapperBox } from "./styles";
 import { useInView } from "react-intersection-observer";
 
-function ShopByCategories() {
+function ShopByCategories({ shopByCat }: any) {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
@@ -15,7 +15,7 @@ function ShopByCategories() {
           src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232874/digita-images/static/uej2dnhrgldg1jaztexn.png"
           alt="loading"
         />
-        <Slider />
+        <Slider shopByCat={shopByCat} />
       </Box>
     </WrapperBox>
   );

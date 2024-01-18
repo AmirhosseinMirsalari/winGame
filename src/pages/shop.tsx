@@ -1,16 +1,30 @@
-import { Fragment, useState, useEffect } from "react";
+import {
+  Box,
+  Container,
+  Fade,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Container, useMediaQuery, Grid, Fade, Box, Typography } from "@mui/material";
-import { CategoriesFilter, ColorFilter, FiltersDrawer, PriceFilter, Toolbar } from "components/Shop";
-import ProductItem from "components/Home/Products/Components/ProductItem/ProductItem";
-import { useGetAllProductsQuery } from "redux/products/productsApi";
-import ProductPlaceholder from "components/Placeholders/ProductPlaceholder";
-import Head from "next/head";
 import Breadcrumbs from "components/Breadcrumbs/Breadcrumbs";
+import ProductItem from "components/Home/Products/Components/ProductItem/ProductItem";
 import Pagination from "components/Pagination/Pagination";
+import ProductPlaceholder from "components/Placeholders/ProductPlaceholder";
+import {
+  CategoriesFilter,
+  ColorFilter,
+  FiltersDrawer,
+  PriceFilter,
+  Toolbar,
+} from "components/Shop";
+import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from "react";
+import http from "utils/services/httpServices";
 
-function Shop() {
+function Shop({ allproductsData }: any) {
   const [displayDrawer, setDisplayDrawer] = useState(false);
   const [selectedLayout, setSelectedLayout] = useState({
     grid: true,
@@ -18,9 +32,9 @@ function Shop() {
   });
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  
+
   const router = useRouter();
-  const [productsPerPage,setProductsPerPage] = useState(12);
+  const [productsPerPage, setProductsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
   // Create a new instance of URLSearchParams with the current search query
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
@@ -34,7 +48,10 @@ function Shop() {
 
   let categoryQueryParams = searchParams.get("category");
   if (categoryQueryParams) {
-    queries = `${queries} &category=${categoryQueryParams.replaceAll("&", "%26")}`;
+    queries = `${queries} &category=${categoryQueryParams.replaceAll(
+      "&",
+      "%26"
+    )}`;
   }
 
   let colorQueryParams = searchParams.get("color");
@@ -42,7 +59,7 @@ function Shop() {
     queries = `${queries} &color=${colorQueryParams}`;
   }
 
-  let priceQueryParams = searchParams.get("priceRange");
+  let priceQueryParams = searchParams.get("price");
   if (priceQueryParams) {
     queries = `${queries} &price=${priceQueryParams}`;
   }
@@ -56,23 +73,31 @@ function Shop() {
     setDisplayDrawer(open);
   };
 
-  const { data: productsData, isLoading, isError } = useGetAllProductsQuery(queries);
-  const products = productsData?.data ?? [];
-  const productsLength = productsData?.total ?? 0;
+  const products = allproductsData?.products ?? [];
+  const productsLength = allproductsData?.total ?? 0;
+  console.log(allproductsData);
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
     let firstCatParams = selectedQueryParams?.split("/").length === 2;
 
     if (selectedQueryParams?.includes(name) && !firstCatParams) {
-      searchParams.set(filter, `${selectedQueryParams.replace(`/${name}`, "")}`);
+      searchParams.set(
+        filter,
+        `${selectedQueryParams.replace(`/${name}`, "")}`
+      );
     } else if (selectedQueryParams?.includes(name) && firstCatParams) {
       searchParams.delete(filter);
     } else {
-      searchParams.set(filter, selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`);
+      searchParams.set(
+        filter,
+        selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`
+      );
     }
     // Update the URLSearchParams with the updated search query
-    router.push(`/shop?${searchParams.toString()}`, undefined, { shallow: true });
+    router.push(`/shop?${searchParams.toString()}`, undefined, {
+      shallow: false,
+    });
     setCurrentPage(1);
   };
 
@@ -94,13 +119,21 @@ function Shop() {
         <Grid container columnSpacing={4}>
           {matches && (
             <Grid item xs={3.5}>
-              <CategoriesFilter addQueryParams={addQueryParams} categoryQueryParams={categoryQueryParams} />
+              <CategoriesFilter
+                addQueryParams={addQueryParams}
+                categoryQueryParams={categoryQueryParams}
+              />
               <ColorFilter drawer={true} addQueryParams={addQueryParams} />
               <PriceFilter drawer={true} />
             </Grid>
           )}
           {!matches && (
-            <FiltersDrawer displayDrawer={displayDrawer} categoryQueryParams={categoryQueryParams} toggleDrawer={toggleDrawer} addQueryParams={addQueryParams} />
+            <FiltersDrawer
+              displayDrawer={displayDrawer}
+              categoryQueryParams={categoryQueryParams}
+              toggleDrawer={toggleDrawer}
+              addQueryParams={addQueryParams}
+            />
           )}
           <Grid item xs={12} md={8.5}>
             <Toolbar
@@ -113,12 +146,15 @@ function Shop() {
               setProductsPerPage={setProductsPerPage}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {!isLoading && !isError
-                ? products.map((product) => {
+              {products
+                ? products.map((product: any) => {
                     if (products.length === 0) {
                       return (
                         <Box sx={{ textAlign: "center", margin: "40px auto" }}>
-                          <Typography variant="h5" sx={{ color: "common.digitaBlack" }}>
+                          <Typography
+                            variant="h5"
+                            sx={{ color: "common.digitaBlack" }}
+                          >
                             نتیجه ای یافت نشد
                           </Typography>
                         </Box>
@@ -167,3 +203,53 @@ function Shop() {
 }
 
 export default Shop;
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context;
+  const { category, color, price, sort }: any = query;
+  const limit = query.limit || 12;
+  const page = query.page || 1;
+  const search = query.search || "";
+
+  let queryParams = `page=${page}&limit=${limit}&search=${search}`;
+
+  if (category) {
+    queryParams += `&category=${category.replace(/ /g, "%20")}`;
+  }
+  if (color) {
+    queryParams += `&color=${color.replace(/ /g, "%20")}`;
+  }
+  if (price) {
+    queryParams += `&price=${price.replace(/ /g, "%20")}`;
+  }
+  if (sort) {
+    queryParams += `&sort=${sort.replace(/ /g, "%20")}`;
+  }
+
+  console.log(queryParams);
+
+  try {
+    const { data: products } = await http.get(`/products?${queryParams}`);
+    return {
+      props: {
+        allproductsData: {
+          products: products?.data || [],
+          total: products?.total || 0,
+          isLoading: false, // Set loading state here if needed
+          isError: false, // Set error state here if needed
+        },
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        productsData: {
+          products: [],
+          total: 0,
+          isLoading: false, // Set loading state here if needed
+          isError: true, // Set error state here if needed
+        },
+      },
+    };
+  }
+}

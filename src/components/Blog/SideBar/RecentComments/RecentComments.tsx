@@ -1,17 +1,11 @@
-import { Typography, Skeleton, Box } from "@mui/material";
-import RecentComment from "./RecentComment/RecentComment";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { FilterTitleWrapper } from "components/Shop/styles";
-import { useGetAllReviewsQuery } from "redux/reviews/reviewsApi";
+import RecentComment from "./RecentComment/RecentComment";
 
-function RecentComments() {
-  const {
-    data: reviewsData,
-    isLoading,
-    isError,
-  } = useGetAllReviewsQuery({ path: "articles", queries: "page=0 &limit=4" });
-  const reviews = reviewsData?.data ?? [];
+function RecentComments({ reviewsData }: any) {
+  const reviews = reviewsData?.reviews ?? [];
   console.log(reviewsData);
-
+  
   return (
     <Box
       sx={{
@@ -23,12 +17,17 @@ function RecentComments() {
       }}
     >
       <FilterTitleWrapper className="underline">
-        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
+        <Typography
+          component={"h4"}
+          variant="body1"
+          color="primary"
+          fontWeight={600}
+        >
           آخرین نظرات
         </Typography>
       </FilterTitleWrapper>
-      {!isLoading && !isError
-        ? reviews.map((review) => (
+      {!reviewsData.isLoading && !reviewsData.isError
+        ? reviews.map((review: any) => (
             <RecentComment
               key={review._id!}
               id={review._id!}

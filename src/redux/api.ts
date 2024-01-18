@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-baseUrl: "https://wingame-api.iran.liara.run/api",
+baseUrl: "https://wingamebackend.onrender.com/api",
 headers: {
       "Content-Type": "application/json",
     },

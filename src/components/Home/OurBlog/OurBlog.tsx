@@ -1,17 +1,15 @@
 import { Container } from "@mui/material";
-import { Title } from "../ShopByCategories/styles";
+import ArticlePlaceholder from "components/Placeholders/ArticlePlaceholder";
+import { useInView } from "react-intersection-observer";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Title } from "../ShopByCategories/styles";
 import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "./styles";
-import { useInView } from "react-intersection-observer";
-import { useGetAllArticlesQuery } from "redux/articles/articlesApi";
-import ArticlePlaceholder from "components/Placeholders/ArticlePlaceholder";
 
-function OurBlog() {
+function OurBlog({ articlesData }: any) {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { data, isLoading, isError } = useGetAllArticlesQuery("");
-  const articles = data?.data ?? [];
+  const articles = articlesData?.articles ?? [];
 
   return (
     <ContainerWrapper
@@ -49,8 +47,8 @@ function OurBlog() {
               },
             }}
           >
-            {!isLoading && !isError
-              ? articles.map((item) => (
+            {!articlesData.isLoading && !articlesData.isError
+              ? articles.map((item: any) => (
                   <SwiperSlide key={item._id!}>
                     <BlogCard item={item} />
                   </SwiperSlide>

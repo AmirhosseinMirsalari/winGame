@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import { OpenLoginContextProvider } from "context/openLogin";
 import { useRouter } from "next/router";
+import AboutUs from "./about-us";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -23,12 +24,10 @@ interface MyAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache();
 
-
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const router = useRouter();
-
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
@@ -45,12 +44,14 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
               </Head>
               <NextNProgress height={3} color="red" />
               <Navbar />
-              <Component {...pageProps} />
+              {router.pathname !== "/about-us" && <Component {...pageProps} />}
+              {!router.asPath.includes("user") &&
+                router.pathname !== "/about-us" && <Footer />}
               <ToastContainer />
-              {!router.asPath.includes("user") && <Footer />}
             </PersistGate>
           </OpenLoginContextProvider>
         </Provider>
+        {router.pathname === "/about-us" && <AboutUs />}
       </ThemeProvider>
     </CacheProvider>
   );

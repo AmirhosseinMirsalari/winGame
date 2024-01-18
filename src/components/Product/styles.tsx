@@ -41,7 +41,7 @@ export const filledPrice = {
   padding: "20px",
   lineHeight: "1",
   display: "static",
-  fontFamily: "Jost",
+  fontFamily: "iranyekan",
 };
 
 export const productTitle = {
@@ -495,7 +495,7 @@ export const colorBoxStyles = {
 
 export const Tab = styled(TabUnstyled)`
   white-space: nowrap;
-  font-family:iranyekan;
+  font-family: iranyekan;
   height: 100%;
   font-size: 16px;
   font-weight: 500;

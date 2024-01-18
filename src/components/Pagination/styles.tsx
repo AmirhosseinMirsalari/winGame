@@ -19,7 +19,7 @@ export const PaginationListItem = styled("li")({
   width: "40px",
   height: "40px",
   cursor: "pointer",
-  fontFamily: "jost",
+  fontFamily: "iranyekan",
   color: "#333333",
   transition: "all 150ms ease-in",
   "&:hover": {
